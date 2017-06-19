@@ -4,15 +4,15 @@
 \alias{miRNA_NameToAccession}
 \title{The miRBase miRNA names with specified version to Accession IDs}
 \usage{
-miRNA_NameToAccession(miRNANames, Version = "v21")
+miRNA_NameToAccession(miRNANames, version = "v21")
 }
 \arguments{
 \item{miRNANames}{A character vector representing the source miRNA names needed to be convert.}
 
-\item{Version}{A character value representing the version corresponding the miRNANames.
+\item{version}{A character value representing the version corresponding the miRNANames.
+Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 The optional values are in below:\cr
-"v6","v7_1","v8","v8_1","v8_2","v9","v9_1",\cr
-"v9_2","v10","v10_1","v11","v12","v13","v14",\cr
+"v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
 "v15","v16","v17","v18","v19","v20","v21"\cr}
 }
 \value{
@@ -29,8 +29,8 @@ This function converts a group of any species' miRNA name to the Accession IDs d
 \examples{
 data(miRNATest)
 miRNANames=miRNATest$miRNA_Name
-checkMiRNAVersion(miRNANames)
-result1=miRNA_NameToAccession(miRNANames,Version="v18")
+version=checkMiRNAVersion(miRNANames,verbose=TRUE)
+result1=miRNA_NameToAccession(miRNANames,version=version)
 result2=miRNA_AccessionToName(result1[,2],targetVersion="v21")
 result3=miRNAVersionConvert(miRNANames,targetVersion="v21",exact=TRUE)
 

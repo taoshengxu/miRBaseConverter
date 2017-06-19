@@ -2,7 +2,7 @@
 % Please edit documentation in R/miRBaseConvert.R
 \name{miRNAVersionConvert}
 \alias{miRNAVersionConvert}
-\title{miRBase name version convert}
+\title{miRBase version convert for miRNA Names}
 \usage{
 miRNAVersionConvert(miRNANames, targetVersion = "v21", exact = TRUE,
   verbose = TRUE)
@@ -11,19 +11,19 @@ miRNAVersionConvert(miRNANames, targetVersion = "v21", exact = TRUE,
 \item{miRNANames}{A character vector representing the source miRNA names needed to be convert.}
 
 \item{targetVersion}{A character value representing the target miRBase version corresponding the source miRNA names.
+Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 The optional values are in below:\cr
-"v6","v7_1","v8","v8_1","v8_2","v9","v9_1",\cr
-"v9_2","v10","v10_1","v11","v12","v13","v14",\cr
+"v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
 "v15","v16","v17","v18","v19","v20","v21"\cr}
 
-\item{exact}{logical value. If true, the result will be the most exactly matched result.
+\item{exact}{Logical value. If true, the result will be the most exactly matched result.
 If FALSE, the result will include all the possible matched miRNA name. If one miRNA can match multiple names. All the matched names are
  concatenated with "&".}
 
-\item{verbose}{logical value. If true, it will print the multiple matched miRNA names and Accession IDs to the console.}
+\item{verbose}{Logical value. If true, it will print the multiple matched miRNA names and Accession IDs to the console.}
 }
 \value{
-A data frame with three columns. The three columns are defined as below:
+A data frame with three columns. The number of rows equal to the input miRNA names. The three columns are defined as below:
 \itemize{
  \item  \strong{OriginalName} : The original miRNA names (Column 1).\cr
  \item \strong{TargetName} : The converted miRBase names (in specified version) corresponding to the original miRNA names (Column 2).\cr

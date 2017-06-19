@@ -2,7 +2,7 @@
 % Please edit documentation in R/miRBaseConvert.R
 \name{getMiRNAHistory}
 \alias{getMiRNAHistory}
-\title{Obtain all miRBase versions' information for a single specified miRNA.}
+\title{Get the detailed information of a single specified miRNA in all miRBase versions.}
 \usage{
 getMiRNAHistory(AccessionID)
 }
@@ -10,17 +10,17 @@ getMiRNAHistory(AccessionID)
 \item{AccessionID}{A character representing the single AccessionID.}
 }
 \value{
-A 21X7 data frame including all the history information (Precursor, Mature, Sequence) of the specified miRNA.
+A data frame (21X7) including all the history information (Precursor, Mature, Sequence) of the specified miRNA.
  Each row represents a miRBase version.
 }
 \description{
-This function returns all miRBase versions' information of a single specified miRNA.
+This function returns all available miRBase versions' information of a single specified miRNA.
 }
 \examples{
 #####1,The input is a miRNA Name
-name="hsa-miR-26b-5p"
-result1=miRNAVersionConvert(name,targetVersion="v21",exact=TRUE)
-AccessionID=result1[,3]
+miRNAName="hsa-miR-26b-5p"
+result1=miRNA_NameToAccession(miRNAName,version="v21")
+AccessionID=result1[,2]
 result2=getMiRNAHistory(AccessionID)
 
 #####2,The input is miRNA Accession Id

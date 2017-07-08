@@ -7,8 +7,8 @@
 \format{A data frame}
 \description{
 \itemize{
- \item AccessionID : miRNA Accession ID in miRBase
- \item miRNA_Name : miRNA name
+ \item Accession : miRNA Accessions in miRBase
+ \item miRNA_Name : miRNA names
 }
 }
 \note{

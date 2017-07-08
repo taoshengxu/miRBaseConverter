@@ -2,7 +2,7 @@
 % Please edit documentation in R/miRBaseConvert.R
 \name{miRNA_NameToAccession}
 \alias{miRNA_NameToAccession}
-\title{The miRBase miRNA names with specified version to Accession IDs}
+\title{The miRBase miRNA names with specified version to Accessions}
 \usage{
 miRNA_NameToAccession(miRNANames, version = "v21")
 }
@@ -20,11 +20,11 @@ A nx2 data frame. The number of rows equal to the input miRNA names. The two col
 
 \itemize{
  \item \strong{miRNAName_\{Version\}} : The input miRNA names (Column 1).\cr
- \item \strong{AccessionID} : The convert Accession ID (Column 2).\cr
+ \item \strong{Accession} : The convert Accession(Column 2).\cr
  }
 }
 \description{
-This function converts a group of any species' miRNA name to the Accession IDs defined in miRBase.
+This function converts a group of any species' miRNA name to the Accessions defined in miRBase.
 }
 \examples{
 data(miRNATest)

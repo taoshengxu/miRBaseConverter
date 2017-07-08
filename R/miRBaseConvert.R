@@ -11,7 +11,7 @@
 #' @param exact Logical value. If true, the result will be the most exactly matched result.
 #'  If FALSE, the result will include all the possible matched miRNA name. If one miRNA can match multiple names. All the matched names are
 #'   concatenated with "&".
-#' @param verbose Logical value. If true, it will print the multiple matched miRNA names and Accession IDs to the console.
+#' @param verbose Logical value. If true, it will print the multiple matched miRNA Names and Accessions to the console.
 #' @note Please note: Due to some miRNA names changing many times in history. Even if choose the third parameter "exact"=TRUE, it may still have some miRNAs that can't
 #' match the unique name in the target version. In order to return the accurate result as possible, we also concatenate the multiple matched miRNA names with "&". This is the rare case but it happens sometimes.
 #'
@@ -20,7 +20,7 @@
 #'\itemize{
 #'  \item  \strong{OriginalName} : The original miRNA names (Column 1).\cr
 #'  \item \strong{TargetName} : The converted miRBase names (in specified version) corresponding to the original miRNA names (Column 2).\cr
-#'  \item \strong{AccessionID} : The corresponding miRBase accession IDs (Column 3).
+#'  \item \strong{Accession} : The corresponding miRBase Accessions (Column 3).
 #'}
 #' @examples
 #' data(miRNATest)
@@ -51,7 +51,7 @@ miRNAVersionConvert <-function(miRNANames,targetVersion="v21",exact=TRUE,verbose
   target <- data.frame(
     OriginalName = df$uid,
     TargetName = SYM[df$SYM],
-    AccessionID = ACC[df$ACC],
+    Accession = ACC[df$ACC],
     stringsAsFactors = FALSE
   )
   if (exact) {
@@ -68,7 +68,7 @@ miRNAVersionConvert <-function(miRNANames,targetVersion="v21",exact=TRUE,verbose
   target <- data.frame(
     OriginalName = uid,
     TargetName = splitpaste(target$TargetName, f),
-    AccessionID = splitpaste(target$AccessionID, f),
+    Accession = splitpaste(target$Accession, f),
     row.names=NULL, stringsAsFactors = FALSE
   )
   if(verbose)
@@ -88,12 +88,12 @@ miRNAVersionConvert <-function(miRNANames,targetVersion="v21",exact=TRUE,verbose
   target[match(miRNANames, target$OriginalName),]
 }
 
-#' miRBase Accession ID to miRNA Name in specified version
+#' miRBase Accession to miRNA Name in specified version
 #'
-#' This function converts a group of any species' miRNA Accession IDs (including precursor and mature miRNA) to a specified miRBase version if the Accession IDs have been defined in miRBase.
+#' This function converts a group of any species' miRNA Accessions (including precursor and mature miRNA) to a specified miRBase version if the Accessions have been defined in miRBase.
 #'
-#' @param AccessionIDs A character vector representing the Accession IDs needed to be convert.
-#' @param targetVersion A character value representing the target miRBase version corresponding the Accession IDs.
+#' @param Accessions A character vector representing the miRNA Accessions needed to be convert.
+#' @param targetVersion A character value representing the target miRBase version corresponding the Accessions.
 #' The optional values are in below:\cr
 #' "v6","v7_1","v8","v8_1","v8_2","v9","v9_1",\cr
 #' "v9_2","v10","v10_1","v11","v12","v13","v14",\cr
@@ -101,41 +101,41 @@ miRNAVersionConvert <-function(miRNANames,targetVersion="v21",exact=TRUE,verbose
 #' @return
 #' A nx2 data frame. The number of rows equal to the input miRNA names. The two columns are defined as below:
 #'\itemize{
-#' \item \strong{AccessionID} : The Accession ID of miRNAs (Column 1).\cr
-#' \item  \strong{TargetName} : The converted miRBase names (in specified version) corresponding to the Accession IDs (Column 2).\cr
+#' \item \strong{Accession} : The Accession of miRNAs (Column 1).\cr
+#' \item  \strong{TargetName} : The converted miRBase names (in specified version) corresponding to the Accessions (Column 2).\cr
 #' }
 #' @examples
 #' data(miRNATest)
-#' AccessionIDs=miRNATest$AccessionID
-#' result1=miRNA_AccessionToName(AccessionIDs,targetVersion="v13")
-#' result2=miRNA_AccessionToName(AccessionIDs,targetVersion="v21")
+#' Accessions=miRNATest$Accession
+#' result1=miRNA_AccessionToName(Accessions,targetVersion="v13")
+#' result2=miRNA_AccessionToName(Accessions,targetVersion="v21")
 #'
 #' @author
 #'  Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
 #'
-miRNA_AccessionToName<-function(AccessionIDs,targetVersion="v21")
+miRNA_AccessionToName<-function(Accessions,targetVersion="v21")
 {
-  AccessionIDs=as.character(AccessionIDs)
-  AccessionIDs=gsub(" ","",AccessionIDs)##Remove the possible space
+  Accessions=as.character(Accessions)
+  Accessions=gsub(" ","",Accessions)##Remove the possible space
 
   VMAP <- .getmiRNAs(targetVersion)[, c("ACC", "SYM")]
 
-  uid=unique(as.vector(AccessionIDs))
+  uid=unique(as.vector(Accessions))
   ACC_ID=match(uid,ACC)
   df=data.frame(uid = uid, ACC = ACC_ID, stringsAsFactors=FALSE)
   df <- unique(merge(df, VMAP, by="ACC"))
-  target <- data.frame(AccessionID = df$uid,TargetName = SYM[df$SYM],stringsAsFactors = FALSE)
-  target <- target[match(AccessionIDs, target$AccessionID),]
-  target$AccessionID=AccessionIDs
+  target <- data.frame(Accession = df$uid,TargetName = SYM[df$SYM],stringsAsFactors = FALSE)
+  target <- target[match(Accessions, target$Accession),]
+  target$Accession=Accessions
   rownames(target)= NULL
   target
 }
 
 
-#' The miRBase miRNA names with specified version to Accession IDs
+#' The miRBase miRNA names with specified version to Accessions
 #'
-#' This function converts a group of any species' miRNA name to the Accession IDs defined in miRBase.
+#' This function converts a group of any species' miRNA name to the Accessions defined in miRBase.
 #'
 #' @param miRNANames A character vector representing the source miRNA names needed to be convert.
 #' @param version A character value representing the version corresponding the miRNANames.
@@ -148,7 +148,7 @@ miRNA_AccessionToName<-function(AccessionIDs,targetVersion="v21")
 #'
 #' \itemize{
 #'  \item \strong{miRNAName_\{Version\}} : The input miRNA names (Column 1).\cr
-#'  \item \strong{AccessionID} : The convert Accession ID (Column 2).\cr
+#'  \item \strong{Accession} : The convert Accession(Column 2).\cr
 #'  }
 #' @examples
 #' data(miRNATest)
@@ -173,7 +173,7 @@ miRNA_NameToAccession<-function(miRNANames,version="v21")
   SYM_ID = match(uid, SYM)
   df <- data.frame(uid = uid, SYM = SYM_ID, stringsAsFactors=FALSE)
   df <- unique( merge(df, VMAP, by="SYM"))
-  target <- data.frame(miRNANames = df$uid,AccessionID = ACC[df$ACC],stringsAsFactors = FALSE)
+  target <- data.frame(miRNANames = df$uid,Accession = ACC[df$ACC],stringsAsFactors = FALSE)
   target <- target[match(miRNANames, target$miRNANames),]
   target$miRNANames=miRNANames
   rownames(target)= NULL
@@ -185,8 +185,8 @@ miRNA_NameToAccession<-function(miRNANames,version="v21")
 #'
 #' This function returns the miRNA sequences for a list of miRNAs.
 #'
-#' @param AccessionIDs A character vector representing the miRNA Accession IDs in miRBase.
-#' @param targetVersion A character value representing the target miRBase version corresponding the Accession IDs.
+#' @param Accessions A character vector representing the miRNA Accessions in miRBase.
+#' @param targetVersion A character value representing the target miRBase version corresponding the Accessions.
 #'  Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 #' The optional values are in below:\cr
 #' "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
@@ -195,41 +195,41 @@ miRNA_NameToAccession<-function(miRNANames,version="v21")
 #' A nx2 data frame. The number of row equals to input miRNAs. The two columns are defined as below:
 #'
 #' \itemize{
-#'  \item \strong{AccessionID} : The original miRNA (Column 1).\cr
+#'  \item \strong{Accession} : The original miRNA (Column 1).\cr
 #'  \item \strong{miRNASequence_\{targetVersion\}} : The return miRNA sequence (in specified version) corresponding to the input miRNAs (Column 2).\cr
 #'  }
 #' @examples
-#' #####1, The input are miRNA Accession IDs
+#' #####1, The input are miRNA Accessions
 #' data(miRNATest)
-#' AccessionIDs=miRNATest$AccessionID
-#' result1=getMiRNASequence(AccessionIDs,targetVersion="v13")
-#' result2=getMiRNASequence(AccessionIDs,targetVersion="v21")
+#' Accessions=miRNATest$Accession
+#' result1=getMiRNASequence(Accessions,targetVersion="v13")
+#' result2=getMiRNASequence(Accessions,targetVersion="v21")
 #'
 #' #####2, The input are miRNA Names
 #' data(miRNATest)
 #' miRNANames=miRNATest$miRNA_Name
 #' result3=miRNAVersionConvert(miRNANames,targetVersion="v21",exact=TRUE)
-#' AccessionIDs=result3[,3]
-#' result4=getMiRNASequence(AccessionIDs,targetVersion="v21")
+#' Accessions=result3[,3]
+#' result4=getMiRNASequence(Accessions,targetVersion="v21")
 #'
 #' @author
 #' Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
 #'
-getMiRNASequence<-function(AccessionIDs,targetVersion="v21")
+getMiRNASequence<-function(Accessions,targetVersion="v21")
 {
-  AccessionIDs=as.character(AccessionIDs)
-  AccessionIDs=gsub(" ","",AccessionIDs)##Remove the possible space
+  Accessions=as.character(Accessions)
+  Accessions=gsub(" ","",Accessions)##Remove the possible space
 
   VMAP <- .getmiRNAs(targetVersion)[, c("ACC", "SEQ")]
 
-  uid=unique(as.vector(AccessionIDs))
+  uid=unique(as.vector(Accessions))
   ACC_ID=match(uid,ACC)
   df=data.frame(uid = uid, ACC = ACC_ID, stringsAsFactors=FALSE)
   df <- unique(merge(df, VMAP, by="ACC"))
-  target <- data.frame(AccessionID = df$uid,miRNASequence = SEQ[df$SEQ],stringsAsFactors = FALSE)
-  target <- target[match(AccessionIDs, target$AccessionID),]
-  target$AccessionID=AccessionIDs
+  target <- data.frame(Accession = df$uid,miRNASequence = SEQ[df$SEQ],stringsAsFactors = FALSE)
+  target <- target[match(Accessions, target$Accession),]
+  target$Accession=Accessions
   rownames(target)= NULL
   colnames(target)[2]=paste("miRNASequence_",targetVersion,sep="")
   target
@@ -240,7 +240,7 @@ getMiRNASequence<-function(AccessionIDs,targetVersion="v21")
 #'
 #' This function returns all available miRBase versions' information of a single specified miRNA.
 #'
-#' @param AccessionID A character representing the single AccessionID.
+#' @param Accession A character representing the single Accession.
 #'
 #' @return
 #'  A data frame (21X7) including all the history information (Precursor, Mature, Sequence) of the specified miRNA.
@@ -249,26 +249,26 @@ getMiRNASequence<-function(AccessionIDs,targetVersion="v21")
 #' #####1,The input is a miRNA Name
 #' miRNAName="hsa-miR-26b-5p"
 #' result1=miRNA_NameToAccession(miRNAName,version="v21")
-#' AccessionID=result1[,2]
-#' result2=getMiRNAHistory(AccessionID)
+#' Accession=result1[,2]
+#' result2=getMiRNAHistory(Accession)
 #'
-#' #####2,The input is miRNA Accession Id
-#' AccessionID="MIMAT0000765"
-#' result3=getMiRNAHistory(AccessionID)
+#' #####2,The input is miRNA Accession
+#' Accession="MIMAT0000765"
+#' result3=getMiRNAHistory(Accession)
 #'
 #' @author
 #' Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
 #'
-getMiRNAHistory<-function(AccessionID)
+getMiRNAHistory<-function(Accession)
 {
-  AccessionID=as.character(AccessionID)
-  AccessionID=gsub(" ","",AccessionID)##Remove the possible space
+  Accession=as.character(Accession)
+  Accession=gsub(" ","",Accession)##Remove the possible space
 
-  if(length(AccessionID)>1)
+  if(length(Accession)>1)
     stop("This function is only for a single miRNA query, Please query miRNAs one by one")
 
-  ACC_ID=match(AccessionID,ACC)
+  ACC_ID=match(Accession,ACC)
   if(!is.na(ACC_ID))
   {
     target=data.frame(matrix(vector(),length(VER), 7,dimnames=list(c(), c("Precursor","PrecursorSequence","Mature1","Mature1Sequence","Mature2","Mature2Sequence","Status"))),stringsAsFactors=FALSE)
@@ -349,40 +349,40 @@ checkMiRNAVersion<-function(miRNANames,verbose=TRUE)
 #' Open the miRBase webpages of the specified miRNAs
 #'
 #' This function redirects the miRBase webpage of the specified miRNAs
-#' @param AccessionIDs A character vector representing the miRNA Accession IDs in miRBase.
+#' @param Accessions A character vector representing the miRNA Accessions in miRBase.
 #' We restict the number of queried miRNAs each time. The maximum number of the input miRNAs is 15.
 #'
 #' @examples
 #' #### 1. A step-loop
-#' AccessionID1="MI0000447"
-#' goTo_miRBase(AccessionID1)
+#' Accession1="MI0000447"
+#' goTo_miRBase(Accession1)
 #'
 #' #### 2. A mature miRNA
-#' AccessionID2="MIMAT0026477"
-#' goTo_miRBase(AccessionID2)
+#' Accession2="MIMAT0026477"
+#' goTo_miRBase(Accession2)
 #'
 #' #### 3. A list of miRNAs
-#' AccessionID3=miRNATest$AccessionID[1:10]
-#' goTo_miRBase(AccessionID3)
+#' Accession3=miRNATest$Accession[1:10]
+#' goTo_miRBase(Accession3)
 #'
 #' @return
 #' No values
 #' @author
 #' Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
-goTo_miRBase<-function(AccessionIDs)
+goTo_miRBase<-function(Accessions)
 {
-  AccessionIDs=unique(AccessionIDs)
-  if(length(AccessionIDs)>15)
+  Accessions=unique(Accessions)
+  if(length(Accessions)>15)
   {
     message("The number of the queried miRNAs is out of 15. Please reduce the input miRNA number")
   }
   else
   {
 
-    AccessionIDs=as.character(AccessionIDs)
-    AccessionIDs=gsub(" ","",AccessionIDs)##Remove the possible space
-    alive=checkMiRNAAlive(AccessionIDs)
+    Accessions=as.character(Accessions)
+    Accessions=gsub(" ","",Accessions)##Remove the possible space
+    alive=checkMiRNAAlive(Accessions)
     for(i in alive)
     {
       if(grepl("MAT",i))
@@ -493,42 +493,42 @@ getMiRNATable<-function(version="v21",species="all")
 #'
 #' This function checks the miRNA status (Alive or Dead) in the latest miRBase verison.
 #'
-#' @param AccessionIDs A character vector representing the miRNA Accession IDs in miRBase.
+#' @param Accessions A character vector representing the miRNA Accessions in miRBase.
 #' @param verbose Logical value. If true, the dead miRNAs will be printed the console.
 #' @examples
 #' data(miRNATest)
-#' ## The input is miRNA Accession IDs
-#' AccessionIDs=miRNATest$AccessionID
-#' alive_AccessionID1=checkMiRNAAlive(AccessionIDs)
+#' ## The input is miRNA Accessions
+#' Accessions=miRNATest$Accession
+#' alive_Accession1=checkMiRNAAlive(Accessions)
 #'
 #' ##The input is miRNA names
 #' miRNANames=miRNATest$miRNA_Name
 #' version=checkMiRNAVersion(miRNANames,verbose = TRUE)
 #' result=miRNA_NameToAccession(miRNANames,version = version)
-#' AccessionIDs=result$AccessionID
-#' alive_AccessionID2=checkMiRNAAlive(AccessionIDs)
+#' Accessions=result$Accession
+#' alive_Accession2=checkMiRNAAlive(Accessions)
 #' @return
-#' A  character vector of Accession IDs for all alive miRNAs. The names of the return vector are the position indexes in the input AccessionIDs.
+#' A  character vector of Accessions for all alive miRNAs. The names of the return vector are the position indexes in the input Accessions.
 #' @author
 #' Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
 #'
-checkMiRNAAlive<-function(AccessionIDs, verbose=TRUE)
+checkMiRNAAlive<-function(Accessions, verbose=TRUE)
 {
-  AccessionIDs=as.character(AccessionIDs)
-  AccessionIDs=gsub(" ","",AccessionIDs)##Remove the possible space
-  Accession=match(AccessionIDs,ACC)
+  Accessions=as.character(Accessions)
+  Accessions=gsub(" ","",Accessions)##Remove the possible space
+  Accession=match(Accessions,ACC)
 
   all_accession=.getmiRNAs()[,1]
   index = is.element(Accession,all_accession)
-  alive=AccessionIDs[index]
+  alive=Accessions[index]
   names(alive)=which(index)
   if(length(which(!index)>0) && verbose)
   {
-      dead=na.omit(unique(AccessionIDs[!index]))
-      dead=data.frame("Dead.miRNAs"=dead)
-      message("The dead miRNAs are in below:")
-      print.data.frame(dead)
+    dead=na.omit(unique(Accessions[!index]))
+    dead=data.frame("Dead.miRNAs"=dead)
+    message("The dead miRNAs are in below:")
+    print.data.frame(dead)
   }
   alive
 }
@@ -557,7 +557,7 @@ checkMiRNAAlive<-function(AccessionIDs, verbose=TRUE)
 #' @return
 #' A data frame with three columns. The three columns are defined as below:
 #' \itemize{
-#'  \item \strong{AccessionID} \cr
+#'  \item \strong{Accession} \cr
 #'  \item \strong{Name} \cr
 #'  \item \strong{Sequence} \cr
 #'  }
@@ -587,22 +587,22 @@ getAllMiRNAs<-function(version="v21",type="all",species="all")
     Precursor=MiRNAs[,c(1,2,4)]
     Mature1=MiRNAs[,c(5,6,7)]
     Mature2=MiRNAs[,c(8,9,10)]
-    colnames(Precursor)=c("AccessionID","Name","Sequence")
-    colnames(Mature1)=c("AccessionID","Name","Sequence")
-    colnames(Mature2)=c("AccessionID","Name","Sequence")
+    colnames(Precursor)=c("Accession","Name","Sequence")
+    colnames(Mature1)=c("Accession","Name","Sequence")
+    colnames(Mature2)=c("Accession","Name","Sequence")
     MiRNAs=rbind.data.frame(Precursor,Mature1,Mature2)
   }
   else if(type=="precursor")
   {
     MiRNAs=MiRNAs[,c(1,2,4)]
-    colnames(MiRNAs)=c("AccessionID","Name","Sequence")
+    colnames(MiRNAs)=c("Accession","Name","Sequence")
   }
   else if(type=="mature")
   {
     Mature1=MiRNAs[,c(5,6,7)]
     Mature2=MiRNAs[,c(8,9,10)]
-    colnames(Mature1)=c("AccessionID","Name","Sequence")
-    colnames(Mature2)=c("AccessionID","Name","Sequence")
+    colnames(Mature1)=c("Accession","Name","Sequence")
+    colnames(Mature2)=c("Accession","Name","Sequence")
     MiRNAs=rbind(Mature1,Mature2)
   }
   else
@@ -613,7 +613,7 @@ getAllMiRNAs<-function(version="v21",type="all",species="all")
   MiRNAs=MiRNAs[-ind,]
   MiRNAs=unique(MiRNAs)
 
-  MiRNAs$AccessionID=ACC[MiRNAs$AccessionID]
+  MiRNAs$Accession=ACC[MiRNAs$Accession]
   MiRNAs$Name=SYM[MiRNAs$Name]
   MiRNAs$Sequence=SEQ[MiRNAs$Sequence]
 
@@ -751,38 +751,38 @@ miRNA_MatureToPrecursor<-function(miRNANames,version=NULL)
 #'
 #' This function checks the miRNA family for a list of miRNA Names.
 #'
-#' @param AccessionIDs A character vector representing the miRNA Accession IDs in miRBase.
+#' @param Accessions A character vector representing the miRNA Accessions in miRBase.
 #' @examples
 #' data(miRNATest)
-#' ## The input is miRNAAccession IDs
-#' AccessionIDs=miRNATest$AccessionID
-#' Family_Info1=checkMiRNAFamliy(AccessionIDs)
+#' ## The input is miRNA Accessions
+#' Accessions=miRNATest$Accession
+#' Family_Info1=checkMiRNAFamliy(Accessions)
 #'
 #' ##The input is miRNA names
 #' miRNANames=miRNATest$miRNA_Name
 #' version=checkMiRNAVersion(miRNANames,verbose = TRUE)
 #' result=miRNA_NameToAccession(miRNANames,version=version)
-#' AccessionIDs=result$AccessionID
-#' Family_Info2=checkMiRNAFamliy(AccessionIDs)
+#' Accessions=result$Accession
+#' Family_Info2=checkMiRNAFamliy(Accessions)
 #'
 #' @return
-#'  A data frame with four columns. The number of rows equal to the input AccessionIDs. The four columns are defined as below:
+#'  A data frame with four columns. The number of rows equal to the input Accessions. The four columns are defined as below:
 #' \itemize{
-#'  \item  \strong{AccessionID} : The input miRNA accessions.\cr
-#'  \item \strong{miRNAName_v21} : The miRNA names (version 21) corresponding to the AccessionID.\cr
-#'  \item \strong{FamliyAccession} : The accession ID of the family .\cr
+#'  \item  \strong{Accession} : The input miRNA accessions.\cr
+#'  \item \strong{miRNAName_v21} : The miRNA names (version 21) corresponding to the Accession.\cr
+#'  \item \strong{FamliyAccession} : The accession of the family .\cr
 #'  \item \strong{Family} : The family name.\cr
 #' }
 #' @author
 #' Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
 #'
-checkMiRNAFamliy<-function(AccessionIDs)
+checkMiRNAFamliy<-function(Accessions)
 {
-  AccessionIDs=as.character(AccessionIDs)
-  AccessionIDs=gsub(" ","",AccessionIDs)##Remove the possible space
+  Accessions=as.character(Accessions)
+  Accessions=gsub(" ","",Accessions)##Remove the possible space
 
-  uid=unique(as.vector(AccessionIDs))
+  uid=unique(as.vector(Accessions))
   uid=na.omit(uid)
   miRNANames=miRNA_AccessionToName(uid)
   ACC_ID=match(uid,ACC)
@@ -794,9 +794,9 @@ checkMiRNAFamliy<-function(AccessionIDs)
 
   xx=FAM[VMAP$FAM[ind[,1]],]
   target=data.frame(miRNANames,xx,stringsAsFactors=FALSE)
-  target=target[match(AccessionIDs,target$AccessionID),]
+  target=target[match(Accessions,target$Accession),]
   rownames(target)=NULL
-  colnames(target)=c("AccessionID","miRNAName_v21","FamilyAccessionID","Family")
+  colnames(target)=c("Accession","miRNAName_v21","FamilyAccession","Family")
   target
 }
 
@@ -804,40 +804,40 @@ checkMiRNAFamliy<-function(AccessionIDs)
 #'
 #' This function redirects the miRBase miRNA family webpages of the specified miRNA families
 #'
-#' @param FamilyAccessionIDs A character vector representing the miRNA family Accession IDs in miRBase.
+#' @param FamilyAccessions A character vector representing the miRNA family Accessions in miRBase.
 #' We restict the queried number of miRNA family each time. The maximum number of the input miRNA families is 15.
 #' @param verbose Logical value. If true, the invalid miRNA Family will be printed the console.
 #'
 #' @examples
 #' data(miRNATest)
-#' AccessionIDs=miRNATest$AccessionID
-#' Family_Info=checkMiRNAFamliy(AccessionIDs)
-#' FamilyAccessionIDs=Family_Info$FamilyAccession[1:15]
-#' goTo_miRNAFamily(FamilyAccessionIDs)
+#' Accessions=miRNATest$Accession
+#' Family_Info=checkMiRNAFamliy(Accessions)
+#' FamilyAccessions=Family_Info$FamilyAccession[1:15]
+#' goTo_miRNAFamily(FamilyAccessions)
 #' @return
 #' No values
 #' @author
 #' Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
-goTo_miRNAFamily<-function(FamilyAccessionIDs, verbose = TRUE)
+goTo_miRNAFamily<-function(FamilyAccessions, verbose = TRUE)
 {
-  FamilyAccessionIDs=unique(FamilyAccessionIDs)
-  FamilyAccessionIDs=na.omit(FamilyAccessionIDs)
-  if(length(FamilyAccessionIDs)>15)
+  FamilyAccessions=unique(FamilyAccessions)
+  FamilyAccessions=na.omit(FamilyAccessions)
+  if(length(FamilyAccessions)>15)
   {
     message("The number of the queried miRNA familys is out of 15. Please reduce the input miRNA family number")
   }
   else
   {
-    ind=match(FamilyAccessionIDs,FAM$FAM_ACC)
+    ind=match(FamilyAccessions,FAM$FAM_ACC)
     ind1=which(is.na(ind))
     ind2=which(!is.na(ind))
-    dead=FamilyAccessionIDs[ind1]
-    alive=FamilyAccessionIDs[ind2]
+    dead=FamilyAccessions[ind1]
+    alive=FamilyAccessions[ind2]
     if(length(dead)>0 && verbose)
     {
       dead=data.frame("Invalid.miRNAFamily"=dead)
-      message("The invalid Family AccessionIDs are in below: ")
+      message("The invalid Family Accessions are in below: ")
       print.data.frame(dead)
     }
     for(i in alive)

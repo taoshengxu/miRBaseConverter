@@ -28,7 +28,7 @@ to \strong{"all"}, the miRNAs of all species will return.}
 \value{
 A data frame with three columns. The three columns are defined as below:
 \itemize{
- \item \strong{AccessionID} \cr
+ \item \strong{Accession} \cr
  \item \strong{Name} \cr
  \item \strong{Sequence} \cr
  }

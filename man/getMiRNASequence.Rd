@@ -4,12 +4,12 @@
 \alias{getMiRNASequence}
 \title{Get the miRNA sequences}
 \usage{
-getMiRNASequence(AccessionIDs, targetVersion = "v21")
+getMiRNASequence(Accessions, targetVersion = "v21")
 }
 \arguments{
-\item{AccessionIDs}{A character vector representing the miRNA Accession IDs in miRBase.}
+\item{Accessions}{A character vector representing the miRNA Accessions in miRBase.}
 
-\item{targetVersion}{A character value representing the target miRBase version corresponding the Accession IDs.
+\item{targetVersion}{A character value representing the target miRBase version corresponding the Accessions.
  Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 The optional values are in below:\cr
 "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
@@ -19,7 +19,7 @@ The optional values are in below:\cr
 A nx2 data frame. The number of row equals to input miRNAs. The two columns are defined as below:
 
 \itemize{
- \item \strong{AccessionID} : The original miRNA (Column 1).\cr
+ \item \strong{Accession} : The original miRNA (Column 1).\cr
  \item \strong{miRNASequence_\{targetVersion\}} : The return miRNA sequence (in specified version) corresponding to the input miRNAs (Column 2).\cr
  }
 }
@@ -27,18 +27,18 @@ A nx2 data frame. The number of row equals to input miRNAs. The two columns are 
 This function returns the miRNA sequences for a list of miRNAs.
 }
 \examples{
-#####1, The input are miRNA Accession IDs
+#####1, The input are miRNA Accessions
 data(miRNATest)
-AccessionIDs=miRNATest$AccessionID
-result1=getMiRNASequence(AccessionIDs,targetVersion="v13")
-result2=getMiRNASequence(AccessionIDs,targetVersion="v21")
+Accessions=miRNATest$Accession
+result1=getMiRNASequence(Accessions,targetVersion="v13")
+result2=getMiRNASequence(Accessions,targetVersion="v21")
 
 #####2, The input are miRNA Names
 data(miRNATest)
 miRNANames=miRNATest$miRNA_Name
 result3=miRNAVersionConvert(miRNANames,targetVersion="v21",exact=TRUE)
-AccessionIDs=result3[,3]
-result4=getMiRNASequence(AccessionIDs,targetVersion="v21")
+Accessions=result3[,3]
+result4=getMiRNASequence(Accessions,targetVersion="v21")
 
 }
 \author{

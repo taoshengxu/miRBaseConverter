@@ -4,10 +4,10 @@
 \alias{getMiRNAHistory}
 \title{Get the detailed information of a single specified miRNA in all miRBase versions.}
 \usage{
-getMiRNAHistory(AccessionID)
+getMiRNAHistory(Accession)
 }
 \arguments{
-\item{AccessionID}{A character representing the single AccessionID.}
+\item{Accession}{A character representing the single Accession.}
 }
 \value{
 A data frame (21X7) including all the history information (Precursor, Mature, Sequence) of the specified miRNA.
@@ -20,12 +20,12 @@ This function returns all available miRBase versions' information of a single sp
 #####1,The input is a miRNA Name
 miRNAName="hsa-miR-26b-5p"
 result1=miRNA_NameToAccession(miRNAName,version="v21")
-AccessionID=result1[,2]
-result2=getMiRNAHistory(AccessionID)
+Accession=result1[,2]
+result2=getMiRNAHistory(Accession)
 
-#####2,The input is miRNA Accession Id
-AccessionID="MIMAT0000765"
-result3=getMiRNAHistory(AccessionID)
+#####2,The input is miRNA Accession
+Accession="MIMAT0000765"
+result3=getMiRNAHistory(Accession)
 
 }
 \author{

@@ -4,10 +4,10 @@
 \alias{goTo_miRNAFamily}
 \title{Open the miRNA family webpages of the specified miRNAs}
 \usage{
-goTo_miRNAFamily(FamilyAccessionIDs, verbose = TRUE)
+goTo_miRNAFamily(FamilyAccessions, verbose = TRUE)
 }
 \arguments{
-\item{FamilyAccessionIDs}{A character vector representing the miRNA family Accession IDs in miRBase.
+\item{FamilyAccessions}{A character vector representing the miRNA family Accessions in miRBase.
 We restict the queried number of miRNA family each time. The maximum number of the input miRNA families is 15.}
 
 \item{verbose}{Logical value. If true, the invalid miRNA Family will be printed the console.}
@@ -20,10 +20,10 @@ This function redirects the miRBase miRNA family webpages of the specified miRNA
 }
 \examples{
 data(miRNATest)
-AccessionIDs=miRNATest$AccessionID
-Family_Info=checkMiRNAFamliy(AccessionIDs)
-FamilyAccessionIDs=Family_Info$FamilyAccession[1:15]
-goTo_miRNAFamily(FamilyAccessionIDs)
+Accessions=miRNATest$Accession
+Family_Info=checkMiRNAFamliy(Accessions)
+FamilyAccessions=Family_Info$FamilyAccession[1:15]
+goTo_miRNAFamily(FamilyAccessions)
 }
 \author{
 Xu, Taosheng \email{taosheng.x@gmail.com}

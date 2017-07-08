@@ -20,14 +20,14 @@ The optional values are in below:\cr
 If FALSE, the result will include all the possible matched miRNA name. If one miRNA can match multiple names. All the matched names are
  concatenated with "&".}
 
-\item{verbose}{Logical value. If true, it will print the multiple matched miRNA names and Accession IDs to the console.}
+\item{verbose}{Logical value. If true, it will print the multiple matched miRNA Names and Accessions to the console.}
 }
 \value{
 A data frame with three columns. The number of rows equal to the input miRNA names. The three columns are defined as below:
 \itemize{
  \item  \strong{OriginalName} : The original miRNA names (Column 1).\cr
  \item \strong{TargetName} : The converted miRBase names (in specified version) corresponding to the original miRNA names (Column 2).\cr
- \item \strong{AccessionID} : The corresponding miRBase accession IDs (Column 3).
+ \item \strong{Accession} : The corresponding miRBase Accessions (Column 3).
 }
 }
 \description{

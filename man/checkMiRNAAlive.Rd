@@ -4,31 +4,31 @@
 \alias{checkMiRNAAlive}
 \title{Check the miRNA status(Alive or Dead)}
 \usage{
-checkMiRNAAlive(AccessionIDs, verbose = TRUE)
+checkMiRNAAlive(Accessions, verbose = TRUE)
 }
 \arguments{
-\item{AccessionIDs}{A character vector representing the miRNA Accession IDs in miRBase.}
+\item{Accessions}{A character vector representing the miRNA Accessions in miRBase.}
 
 \item{verbose}{Logical value. If true, the dead miRNAs will be printed the console.}
 }
 \value{
-A  character vector of Accession IDs for all alive miRNAs. The names of the return vector are the position indexes in the input AccessionIDs.
+A  character vector of Accessions for all alive miRNAs. The names of the return vector are the position indexes in the input Accessions.
 }
 \description{
 This function checks the miRNA status (Alive or Dead) in the latest miRBase verison.
 }
 \examples{
 data(miRNATest)
-## The input is miRNA Accession IDs
-AccessionIDs=miRNATest$AccessionID
-alive_AccessionID1=checkMiRNAAlive(AccessionIDs)
+## The input is miRNA Accessions
+Accessions=miRNATest$Accession
+alive_Accession1=checkMiRNAAlive(Accessions)
 
 ##The input is miRNA names
 miRNANames=miRNATest$miRNA_Name
 version=checkMiRNAVersion(miRNANames,verbose = TRUE)
 result=miRNA_NameToAccession(miRNANames,version = version)
-AccessionIDs=result$AccessionID
-alive_AccessionID2=checkMiRNAAlive(AccessionIDs)
+Accessions=result$Accession
+alive_Accession2=checkMiRNAAlive(Accessions)
 }
 \author{
 Xu, Taosheng \email{taosheng.x@gmail.com}

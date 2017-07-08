@@ -4,10 +4,10 @@
 \alias{goTo_miRBase}
 \title{Open the miRBase webpages of the specified miRNAs}
 \usage{
-goTo_miRBase(AccessionIDs)
+goTo_miRBase(Accessions)
 }
 \arguments{
-\item{AccessionIDs}{A character vector representing the miRNA Accession IDs in miRBase.
+\item{Accessions}{A character vector representing the miRNA Accessions in miRBase.
 We restict the number of queried miRNAs each time. The maximum number of the input miRNAs is 15.}
 }
 \value{
@@ -18,16 +18,16 @@ This function redirects the miRBase webpage of the specified miRNAs
 }
 \examples{
 #### 1. A step-loop
-AccessionID1="MI0000447"
-goTo_miRBase(AccessionID1)
+Accession1="MI0000447"
+goTo_miRBase(Accession1)
 
 #### 2. A mature miRNA
-AccessionID2="MIMAT0026477"
-goTo_miRBase(AccessionID2)
+Accession2="MIMAT0026477"
+goTo_miRBase(Accession2)
 
 #### 3. A list of miRNAs
-AccessionID3=miRNATest$AccessionID[1:10]
-goTo_miRBase(AccessionID3)
+Accession3=miRNATest$Accession[1:10]
+goTo_miRBase(Accession3)
 
 }
 \author{

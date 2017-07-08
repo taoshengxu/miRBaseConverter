@@ -4,17 +4,17 @@
 \alias{checkMiRNAFamliy}
 \title{Check the miRNA family}
 \usage{
-checkMiRNAFamliy(AccessionIDs)
+checkMiRNAFamliy(Accessions)
 }
 \arguments{
-\item{AccessionIDs}{A character vector representing the miRNA Accession IDs in miRBase.}
+\item{Accessions}{A character vector representing the miRNA Accessions in miRBase.}
 }
 \value{
-A data frame with four columns. The number of rows equal to the input AccessionIDs. The four columns are defined as below:
+A data frame with four columns. The number of rows equal to the input Accessions. The four columns are defined as below:
 \itemize{
- \item  \strong{AccessionID} : The input miRNA accessions.\cr
- \item \strong{miRNAName_v21} : The miRNA names (version 21) corresponding to the AccessionID.\cr
- \item \strong{FamliyAccession} : The accession ID of the family .\cr
+ \item  \strong{Accession} : The input miRNA accessions.\cr
+ \item \strong{miRNAName_v21} : The miRNA names (version 21) corresponding to the Accession.\cr
+ \item \strong{FamliyAccession} : The accession of the family .\cr
  \item \strong{Family} : The family name.\cr
 }
 }
@@ -23,16 +23,16 @@ This function checks the miRNA family for a list of miRNA Names.
 }
 \examples{
 data(miRNATest)
-## The input is miRNAAccession IDs
-AccessionIDs=miRNATest$AccessionID
-Family_Info1=checkMiRNAFamliy(AccessionIDs)
+## The input is miRNA Accessions
+Accessions=miRNATest$Accession
+Family_Info1=checkMiRNAFamliy(Accessions)
 
 ##The input is miRNA names
 miRNANames=miRNATest$miRNA_Name
 version=checkMiRNAVersion(miRNANames,verbose = TRUE)
 result=miRNA_NameToAccession(miRNANames,version=version)
-AccessionIDs=result$AccessionID
-Family_Info2=checkMiRNAFamliy(AccessionIDs)
+Accessions=result$Accession
+Family_Info2=checkMiRNAFamliy(Accessions)
 
 }
 \author{

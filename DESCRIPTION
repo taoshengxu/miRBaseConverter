@@ -1,13 +1,13 @@
 Package: miRBaseConverter
 Type: Package
-Title: A converter for miRNA Name, Accession ID and Sequence in different miRBase Versions
-Version: 0.99.8
+Title: A comprehensive tool for converting and retrieving miRNA information in miRBase historical versions.
+Version: 0.99.9
 Date: 2017-5-9
 Author: Taosheng Xu<taosheng.x@gmail.com>, Thuc Le<Thuc.Le@unisa.edu.au>
 Maintainer: Taosheng Xu<taosheng.x@gmail.com>
 Imports: stats
 Depends: R (>= 3.4)
-Description: miRBaseConverter is a comprehensive tool for the miRNA information retrieval and conversion in miRBase versions. As an R/Bioconductor package, it is mianly desighed for converting and retrieving the definition of miRNAs ( Names, Accession IDs, Sequences, Families and others) in miRBase different versions. It can process a huge number of miRNAs in short time without any other depends.
+Description: A comprehensive tool for converting and retrieving the miRNA Name, Accession, Sequence, Version and Family information in miRBase historical versions. It can process a huge number of miRNAs in short time without other depends.
 License: GPL (>= 2)
 LazyData: TRUE
 Suggests: BiocGenerics, knitr, rtracklayer, utils

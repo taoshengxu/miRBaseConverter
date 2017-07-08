@@ -4,10 +4,11 @@
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/xtsvm/miRBaseConverter?branch=master&svg=true)](https://ci.appveyor.com/project/xtsvm/miRBaseConverter)
 [![bioc](http://www.bioconductor.org/shields/downloads/miRBaseConverter.svg)](http://bioconductor.org/packages/stats/bioc/miRBaseConverter.html)
 [![bioc](http://www.bioconductor.org/shields/years-in-bioc/miRBaseConverter.svg)](http://bioconductor.org/packages/miRBaseConverter/)
-[![bioc](http://bioconductor.org/shields/availability/devel/miRBaseConverter.svg)](http://bioconductor.org/packages/miRBaseConverter/)
-[![bioc](http://www.bioconductor.org/shields/build/release/bioc/miRBaseConverter.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/miRBaseConverter.html)
+[![bioc](http://bioconductor.org/shields/availability/3.6/miRBaseConverter.svg)](http://bioconductor.org/packages/miRBaseConverter/)
+[![bioc](http://www.bioconductor.org/shields/build/devel/bioc/miRBaseConverter.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/miRBaseConverter.html)
 
- `miRBaseConverter` is an R/Bioconductor package for converting the definition of miRNAs ( Names, Accession IDs, Sequences and others) in miRBase different versions ( From miRBase Version 6 to miRBase version 21 [ The latest version ] ). A compressed build-in database is embedded in the `miRBaseConverter` R package for retrieving miRNA information efficiently.
+
+`miRBaseConverter` is an R/Bioconductor package for converting and retrieving the definition of miRNAs ( Names, Accessions, Sequences, Families and others) in miRBase different versions ( From miRBase version 6 to version 21 [ The latest version ] ). A tiny built-in database is embedded in the miRBaseConverter R package for retrieving miRNA information efficiently.
  
 ------------------------------------------------------ 
 

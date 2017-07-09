@@ -8,7 +8,7 @@
 [![bioc](http://www.bioconductor.org/shields/build/devel/bioc/miRBaseConverter.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/miRBaseConverter.html)
 
 
-`miRBaseConverter` is an R/Bioconductor package for converting and retrieving the definition of miRNAs ( Names, Accessions, Sequences, Families and others) in miRBase different versions ( From miRBase version 6 to version 21 [ The latest version ] ). A tiny built-in database is embedded in the miRBaseConverter R package for retrieving miRNA information efficiently.
+`miRBaseConverter` is an R/Bioconductor package for converting and retrieving the definition of miRNAs ( Names, Accessions, Sequences, Families and others) in different miRBase versions ( From miRBase version 6 to version 21 [ The latest version ] ). A tiny built-in database is embedded in the `miRBaseConverter` R package for retrieving miRNA information efficiently.
  
 ------------------------------------------------------ 
 

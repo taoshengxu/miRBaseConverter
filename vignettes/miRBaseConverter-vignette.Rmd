@@ -1,14 +1,14 @@
 ---
-title: "miRBaseConverter: A comprehensive tool for converting and retrieving the miRNA Name, Accession, Sequence, Version and Family information in miRBase historical versions"
+title: "miRBaseConverter: A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions"
 author: Taosheng Xu
-date: '`r Sys.time()`'
+date: '`r Sys.Date()`'
 output:
   BiocStyle::html_document:
     toc: true
     toc_depth: 2
 vignette: >
     %\VignetteEngine{knitr::rmarkdown}
-    %\VignetteIndexEntry{"miRBaseConverter: A comprehensive tool for converting and retrieving the miRNA Name, Accession, Sequence, Version and Family information in miRBase historical versions"}
+    %\VignetteIndexEntry{"miRBaseConverter: A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions"}
     %\VignetteEncoding{UTF-8}
     %\VignetteDepends{rtracklayer}
 ---
@@ -33,7 +33,7 @@ knitr::opts_chunk$set(collapse = TRUE)
 ```
 
 # Overview
-***miRBaseConverter*** is an R/Bioconductor package for converting and retrieving the definition of miRNAs ( Names, Accessions, Sequences, Families and others) in [miRBase](http://www.mirbase.org) different versions ( From miRBase version 6 to version 21 [ The latest version ] ). A tiny built-in database is embedded in the *miRBaseConverter* R package for retrieving miRNA information efficiently.
+***miRBaseConverter*** is an R/Bioconductor package for converting and retrieving the definition of miRNAs ( Names, Accessions, Sequences, Families and others) in different [miRBase](http://www.mirbase.org) versions ( From miRBase version 6 to version 21 [ The latest version ] ). A tiny built-in database is embedded in the *miRBaseConverter* R package for retrieving miRNA information efficiently.
 
 _microRNAs( miRNAs)_ are one of the essential molecules that play the important role in the post-transcriptional gene regulation. The studies about novel miRNA and their function discoveries have an explosive growth in the last decade. The [miRBase](http://www.mirbase.org) database is the authority archive of miRNA annotations and sequences for all species. With the development of researches about miRNAs, the annotation of miRNA has been changed significantly and develops many different historical versions. Each of the previous versions has been adopted in many research literatures and databases. Due to the inconsistent of name annotation of miRNAs, there is a barrier for the later scholars to reuse the previous research results in a convenient way, especially for miRNA databases with thousands of entries. There are some webservers or R-based tools can handle the batch conversion of miRNA names. However, an easy-to-use and well-documented tool for miRNA conversion and information retrieval is still lack.   We present the *miRBaseConverter* R package, a comprehensive tool for miRNA research, to provide a suite of tools for checking miRNA Name, Accession, Sequence, version and family and history information. The *miRBaseConverter* package can be competent for all species including Precursor and Mature miRNAs defined in miRBase.
 

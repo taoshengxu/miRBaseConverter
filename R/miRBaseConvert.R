@@ -85,7 +85,9 @@ miRNAVersionConvert <-function(miRNANames,targetVersion="v21",exact=TRUE,verbose
       print.data.frame(output)
     }
   }
-  target[match(miRNANames, target$OriginalName),]
+  target=target[match(miRNANames, target$OriginalName),]
+  rownames(target)= NULL
+  target
 }
 
 #' miRBase Accession to miRNA Name in specified version
@@ -336,7 +338,8 @@ checkMiRNAVersion<-function(miRNANames,verbose=TRUE)
     num =length(intersect(allSYM, SYM_ID))
     result$Proportion[i]=round((num/length(uid))*100,2)
   }
-  ind=which.max(result$Proportion)
+  ind=which(result$Proportion == max(result$Proportion))
+  ind=rev(ind)[1]
   if(verbose)
   {
     result[result$Proportion == max(result$Proportion), "Recommend"] <- " ***BEST Matched***"

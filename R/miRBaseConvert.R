@@ -659,8 +659,8 @@ miRNA_PrecursorToMature<-function(miRNANames,version=NULL)
 {
   if(is.null(version))
   {
-    message("miRNA version check information:")
-    c_version=rev(checkMiRNAVersion(miRNANames,verbose = FALSE))[1]
+    c_version=checkMiRNAVersion(miRNANames,verbose = FALSE)
+    cat(paste0("The input miRNA version information: miRBase ",c_version))
   }
   else
     c_version=version
@@ -676,6 +676,7 @@ miRNA_PrecursorToMature<-function(miRNANames,version=NULL)
   miRNANames=as.character(miRNANames)
   miRNANames=gsub(" ","",miRNANames)##Remove the possible space
   uid = unique(as.vector(miRNANames))
+  uid=na.omit(uid)
 
   ind=apply(VMAP,2,function(x){match(uid,x)})
   ind[which(is.na(ind[,1])),1]=ind[which(is.na(ind[,1])),2]
@@ -687,6 +688,8 @@ miRNA_PrecursorToMature<-function(miRNANames,version=NULL)
     Mature2 = VMAP[ind[,1],3],
     row.names=NULL, stringsAsFactors = FALSE)
   target=target[match(miRNANames, target$OriginalName),]
+  rownames(target)=NULL
+  target
 }
 
 #' Convert the mature miRNAs to the corresponding precursors
@@ -719,8 +722,8 @@ miRNA_MatureToPrecursor<-function(miRNANames,version=NULL)
 {
   if(is.null(version))
   {
-    message("miRNA version check information:")
     c_version=rev(checkMiRNAVersion(miRNANames,verbose = FALSE))[1]
+    cat(paste0("The input miRNA version information: miRBase ",c_version))
   }
 
   else
@@ -737,17 +740,19 @@ miRNA_MatureToPrecursor<-function(miRNANames,version=NULL)
   miRNANames=as.character(miRNANames)
   miRNANames=gsub(" ","",miRNANames)##Remove the possible space
   uid = unique(as.vector(miRNANames))
+  uid=na.omit(uid)
 
   ind=apply(VMAP,2,function(x){match(uid,x)})
   ind[which(is.na(ind[,2])),2]=ind[which(is.na(ind[,2])),3]
   ind[which(is.na(ind[,2])),2]=ind[which(is.na(ind[,2])),1]
-
 
   target <- data.frame(
     OriginalName = uid,
     Precursor = VMAP[ind[,2],1],
     row.names=NULL, stringsAsFactors = FALSE)
   target=target[match(miRNANames, target$OriginalName),]
+  rownames(target)=NULL
+  target
 }
 
 #' Check the miRNA family

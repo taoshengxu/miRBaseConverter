@@ -1,7 +1,7 @@
 Package: miRBaseConverter
 Type: Package
 Title: A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions
-Version: 0.99.11
+Version: 0.99.12
 Date: 2017-5-9
 Author: Taosheng Xu<taosheng.x@gmail.com>, Thuc Le<Thuc.Le@unisa.edu.au>
 Maintainer: Taosheng Xu<taosheng.x@gmail.com>

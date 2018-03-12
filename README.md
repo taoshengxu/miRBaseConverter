@@ -24,5 +24,5 @@ devtools::install_github("taoshengxu/miRBaseConverter")
 The tutorial and examples of `miRBaseConverter` pacakge can be found [here](https://bioconductor.org/packages/devel/bioc/vignettes/miRBaseConverter/inst/doc/miRBaseConverter-vignette.html).
 
 ## Shiny application
-The online application can be accessed in
+The online application with interactive interface of this package can be accessed in
 [https://taoshengxu.shinyapps.io/miRBaseConverter/](https://taoshengxu.shinyapps.io/miRBaseConverter/).

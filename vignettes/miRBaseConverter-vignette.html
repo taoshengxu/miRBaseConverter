@@ -10,7 +10,7 @@
 
 <meta name="author" content="Taosheng Xu" />
 
-<meta name="date" content="2017-07-10" />
+<meta name="date" content="2018-03-13" />
 
 <title>miRBaseConverter: A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions</title>
 
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div id="header">
 <h1 class="title">miRBaseConverter: A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions</h1>
 <h4 class="author"><em>Taosheng Xu</em></h4>
-<h4 class="date"><em>2017-07-10</em></h4>
+<h4 class="date"><em>2018-03-13</em></h4>
 </div>
 
 <h1>Contents</h1>
@@ -102,6 +102,7 @@ pre code {
 <h1><span class="header-section-number">1</span> Overview</h1>
 <p><strong><em>miRBaseConverter</em></strong> is an R/Bioconductor package for converting and retrieving the definition of miRNAs ( Names, Accessions, Sequences, Families and others) in different <a href="http://www.mirbase.org">miRBase</a> versions ( From miRBase version 6 to version 21 [ The latest version ] ). A tiny built-in database is embedded in the <em>miRBaseConverter</em> R package for retrieving miRNA information efficiently.</p>
 <p><em>microRNAs( miRNAs)</em> are one of the essential molecules that play the important role in the post-transcriptional gene regulation. The studies about novel miRNA and their function discoveries have an explosive growth in the last decade. The <a href="http://www.mirbase.org">miRBase</a> database is the authority archive of miRNA annotations and sequences for all species. With the development of researches about miRNAs, the annotation of miRNA has been changed significantly and develops many different historical versions. Each of the previous versions has been adopted in many research literatures and databases. Due to the inconsistent of name annotation of miRNAs, there is a barrier for the later scholars to reuse the previous research results in a convenient way, especially for miRNA databases with thousands of entries. There are some webservers or R-based tools can handle the batch conversion of miRNA names. However, an easy-to-use and well-documented tool for miRNA conversion and information retrieval is still lack. We present the <em>miRBaseConverter</em> R package, a comprehensive tool for miRNA research, to provide a suite of tools for checking miRNA Name, Accession, Sequence, version and family and history information. The <em>miRBaseConverter</em> package can be competent for all species including Precursor and Mature miRNAs defined in miRBase.</p>
+<p>In addtion, we also develop an online application with interactive interface for this package which can be accessed in <a href="https://taoshengxu.shinyapps.io/miRBaseConverter/" class="uri">https://taoshengxu.shinyapps.io/miRBaseConverter/</a>.</p>
 <p>In the following sections, we present the detail usage of the functions included in the <em>miRBaseConverter</em> package.</p>
 </div>
 <div id="mirna-version-check" class="section level1">
@@ -253,6 +254,7 @@ result2[c(341:345),]
 data(miRNATest)
 miRNANames=miRNATest$miRNA_Name
 result1=miRNA_MatureToPrecursor(miRNANames)
+## The input miRNA version information: miRBase v18
 head(result1)
 ##      OriginalName      Precursor
 ## 1   cel-miR-46-3p     cel-mir-46
@@ -269,6 +271,7 @@ miRNANames=c(&quot;pma-mir-100a&quot;,&quot;sko-mir-92a&quot;,&quot;hsa-mir-6131
 &quot;mmu-mir-153&quot;,&quot;mtr-MIR2592am&quot;,&quot;mml-mir-1239&quot;,&quot;xtr-mir-128-2&quot;,&quot;oan-mir-100&quot;,
 &quot;mmu-mir-378b&quot;,&quot;hsa-miR-508-5p&quot;,&quot;mmu-miR-434-3p&quot;)
 result2=miRNA_PrecursorToMature(miRNANames)
+## The input miRNA version information: miRBase v21
 head(result2)
 ##    OriginalName         Mature1         Mature2
 ## 1  pma-mir-100a pma-miR-100a-5p pma-miR-100a-3p

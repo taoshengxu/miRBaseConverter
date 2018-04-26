@@ -10,7 +10,7 @@ getMiRNAHistory(Accession)
 \item{Accession}{A character representing the single Accession.}
 }
 \value{
-A data frame (21X7) including all the history information (Precursor, Mature, Sequence) of the specified miRNA.
+A data frame including all the history information (Precursor, Mature, Sequence) of the specified miRNA.
  Each row represents a miRBase version.
 }
 \description{
@@ -19,8 +19,8 @@ This function returns all available miRBase versions' information of a single sp
 \examples{
 #####1,The input is a miRNA Name
 miRNAName="hsa-miR-26b-5p"
-result1=miRNA_NameToAccession(miRNAName,version="v21")
-Accession=result1[,2]
+result1=miRNA_NameToAccession(miRNAName,version="v22")
+Accession=result1$Accession
 result2=getMiRNAHistory(Accession)
 
 #####2,The input is miRNA Accession

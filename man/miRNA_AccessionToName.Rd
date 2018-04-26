@@ -4,7 +4,7 @@
 \alias{miRNA_AccessionToName}
 \title{miRBase Accession to miRNA Name in specified version}
 \usage{
-miRNA_AccessionToName(Accessions, targetVersion = "v21")
+miRNA_AccessionToName(Accessions, targetVersion = "v22")
 }
 \arguments{
 \item{Accessions}{A character vector representing the miRNA Accessions needed to be convert.}
@@ -13,7 +13,7 @@ miRNA_AccessionToName(Accessions, targetVersion = "v21")
 The optional values are in below:\cr
 "v6","v7_1","v8","v8_1","v8_2","v9","v9_1",\cr
 "v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-"v15","v16","v17","v18","v19","v20","v21"\cr}
+"v15","v16","v17","v18","v19","v20","v21","v22"\cr}
 }
 \value{
 A nx2 data frame. The number of rows equal to the input miRNA names. The two columns are defined as below:
@@ -29,7 +29,7 @@ This function converts a group of any species' miRNA Accessions (including precu
 data(miRNATest)
 Accessions=miRNATest$Accession
 result1=miRNA_AccessionToName(Accessions,targetVersion="v13")
-result2=miRNA_AccessionToName(Accessions,targetVersion="v21")
+result2=miRNA_AccessionToName(Accessions,targetVersion="v22")
 
 }
 \author{

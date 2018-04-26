@@ -4,7 +4,7 @@
 \alias{miRNAVersionConvert}
 \title{miRBase version convert for miRNA Names}
 \usage{
-miRNAVersionConvert(miRNANames, targetVersion = "v21", exact = TRUE,
+miRNAVersionConvert(miRNANames, targetVersion = "v22", exact = TRUE,
   verbose = TRUE)
 }
 \arguments{
@@ -14,7 +14,7 @@ miRNAVersionConvert(miRNANames, targetVersion = "v21", exact = TRUE,
 Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 The optional values are in below:\cr
 "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-"v15","v16","v17","v18","v19","v20","v21"\cr}
+"v15","v16","v17","v18","v19","v20","v21","v22"\cr}
 
 \item{exact}{Logical value. If true, the result will be the most exactly matched result.
 If FALSE, the result will include all the possible matched miRNA name. If one miRNA can match multiple names. All the matched names are
@@ -41,12 +41,12 @@ match the unique name in the target version. In order to return the accurate res
 data(miRNATest)
 miRNANames=miRNATest$miRNA_Name
 result1=miRNAVersionConvert(miRNANames,targetVersion="v13",exact=TRUE,verbose=TRUE)
-result2=miRNAVersionConvert(miRNANames,targetVersion="v21",exact=TRUE,verbose=TRUE)
-result3=miRNAVersionConvert(miRNANames,targetVersion="v21",exact=FALSE,verbose=TRUE)
+result2=miRNAVersionConvert(miRNANames,targetVersion="v22",exact=TRUE,verbose=TRUE)
+result3=miRNAVersionConvert(miRNANames,targetVersion="v22",exact=FALSE,verbose=TRUE)
 
 miRNANames=c( "hsa-let-7c","hsa-miR-3190-3p","hsa-let-7c","hsa-miR-34b","hsa-miR-378",
 "hsa-miR-499a-3p","hsa-miR-499a-5p","hsa-miR-500","hsa-miR-516a-5p","hsa-miR-550","hsa-miR-589")
-result4=miRNAVersionConvert(miRNANames, targetVersion="v21", exact=TRUE, verbose=TRUE)
+result4=miRNAVersionConvert(miRNANames, targetVersion="v22", exact=TRUE, verbose=TRUE)
 }
 \author{
 Xu, Taosheng \email{taosheng.x@gmail.com}

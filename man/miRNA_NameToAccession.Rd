@@ -4,7 +4,7 @@
 \alias{miRNA_NameToAccession}
 \title{The miRBase miRNA names with specified version to Accessions}
 \usage{
-miRNA_NameToAccession(miRNANames, version = "v21")
+miRNA_NameToAccession(miRNANames, version = "v22")
 }
 \arguments{
 \item{miRNANames}{A character vector representing the source miRNA names needed to be convert.}
@@ -13,7 +13,7 @@ miRNA_NameToAccession(miRNANames, version = "v21")
 Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 The optional values are in below:\cr
 "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-"v15","v16","v17","v18","v19","v20","v21"\cr}
+"v15","v16","v17","v18","v19","v20","v21","v22"\cr}
 }
 \value{
 A nx2 data frame. The number of rows equal to the input miRNA names. The two columns are defined as below:
@@ -31,8 +31,8 @@ data(miRNATest)
 miRNANames=miRNATest$miRNA_Name
 version=checkMiRNAVersion(miRNANames,verbose=TRUE)
 result1=miRNA_NameToAccession(miRNANames,version=version)
-result2=miRNA_AccessionToName(result1[,2],targetVersion="v21")
-result3=miRNAVersionConvert(miRNANames,targetVersion="v21",exact=TRUE)
+result2=miRNA_AccessionToName(result1[,2],targetVersion="v22")
+result3=miRNAVersionConvert(miRNANames,targetVersion="v22",exact=TRUE)
 
 }
 \author{

@@ -4,7 +4,7 @@
 \alias{getMiRNASequence}
 \title{Get the miRNA sequences}
 \usage{
-getMiRNASequence(Accessions, targetVersion = "v21")
+getMiRNASequence(Accessions, targetVersion = "v22")
 }
 \arguments{
 \item{Accessions}{A character vector representing the miRNA Accessions in miRBase.}
@@ -13,7 +13,7 @@ getMiRNASequence(Accessions, targetVersion = "v21")
  Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 The optional values are in below:\cr
 "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-"v15","v16","v17","v18","v19","v20","v21"\cr}
+"v15","v16","v17","v18","v19","v20","v21","v22"\cr}
 }
 \value{
 A nx2 data frame. The number of row equals to input miRNAs. The two columns are defined as below:
@@ -31,14 +31,14 @@ This function returns the miRNA sequences for a list of miRNAs.
 data(miRNATest)
 Accessions=miRNATest$Accession
 result1=getMiRNASequence(Accessions,targetVersion="v13")
-result2=getMiRNASequence(Accessions,targetVersion="v21")
+result2=getMiRNASequence(Accessions,targetVersion="v22")
 
 #####2, The input are miRNA Names
 data(miRNATest)
 miRNANames=miRNATest$miRNA_Name
-result3=miRNAVersionConvert(miRNANames,targetVersion="v21",exact=TRUE)
-Accessions=result3[,3]
-result4=getMiRNASequence(Accessions,targetVersion="v21")
+result3=miRNAVersionConvert(miRNANames,targetVersion="v22",exact=TRUE)
+Accessions=result3$Accession
+result4=getMiRNASequence(Accessions,targetVersion="v22")
 
 }
 \author{

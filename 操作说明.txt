@@ -1,0 +1,12 @@
+1，git checkout master 
+2. git fetch upstream  取回 bioconducor develop 更新
+3. git merge upstream/master 合并develop更新和本地数据
+4. git push origin master  把合并后内容更新到github
+
+
+如果要把当前更新内容更新到  RELEASE_3_6 用 git push origin RELEASE_3_6
+
+如果要更新develop内容： git push upstream
+
+
+https://bioconductor.org/developers/how-to/git/pull-upstream-changes/

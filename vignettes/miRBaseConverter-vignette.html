@@ -10,7 +10,7 @@
 
 <meta name="author" content="Taosheng Xu" />
 
-<meta name="date" content="2018-03-14" />
+<meta name="date" content="2018-04-26" />
 
 <title>miRBaseConverter: A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions</title>
 
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div id="header">
 <h1 class="title">miRBaseConverter: A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions</h1>
 <h4 class="author"><em>Taosheng Xu</em></h4>
-<h4 class="date"><em>2018-03-14</em></h4>
+<h4 class="date"><em>2018-04-26</em></h4>
 </div>
 
 <h1>Contents</h1>
@@ -100,7 +100,7 @@ pre code {
 </style>
 <div id="overview" class="section level1">
 <h1><span class="header-section-number">1</span> Overview</h1>
-<p><strong><em>miRBaseConverter</em></strong> is an R/Bioconductor package for converting and retrieving the definition of miRNAs ( Names, Accessions, Sequences, Families and others) in different <a href="http://www.mirbase.org">miRBase</a> versions ( From miRBase version 6 to version 21 [ The latest version ] ). A tiny built-in database is embedded in the <em>miRBaseConverter</em> R package for retrieving miRNA information efficiently.</p>
+<p><strong><em>miRBaseConverter</em></strong> is an R/Bioconductor package for converting and retrieving the definition of miRNAs ( Names, Accessions, Sequences, Families and others) in different <a href="http://www.mirbase.org">miRBase</a> versions ( From miRBase version 6 to version 22 [ The latest version ] ). A tiny built-in database is embedded in the <em>miRBaseConverter</em> R package for retrieving miRNA information efficiently.</p>
 <p><em>microRNAs( miRNAs)</em> are one of the essential molecules that play the important role in the post-transcriptional gene regulation. The studies about novel miRNA and their function discoveries have an explosive growth in the last decade. The <a href="http://www.mirbase.org">miRBase</a> database is the authority archive of miRNA annotations and sequences for all species. With the development of researches about miRNAs, the annotation of miRNA has been changed significantly and develops many different historical versions. Each of the previous versions has been adopted in many research literatures and databases. Due to the inconsistent of name annotation of miRNAs, there is a barrier for the later scholars to reuse the previous research results in a convenient way, especially for miRNA databases with thousands of entries. There are some webservers or R-based tools can handle the batch conversion of miRNA names. However, an easy-to-use and well-documented tool for miRNA conversion and information retrieval is still lack. We present the <em>miRBaseConverter</em> R package, a comprehensive tool for miRNA research, to provide a suite of tools for checking miRNA Name, Accession, Sequence, version and family and history information. The <em>miRBaseConverter</em> package can be competent for all species including Precursor and Mature miRNAs defined in miRBase.</p>
 <p>In addtion, we also develop an online application with interactive interface for this package which can be accessed in <a href="https://taoshengxu.shinyapps.io/miRBaseConverter/" class="uri">https://taoshengxu.shinyapps.io/miRBaseConverter/</a>.</p>
 <p>In the following sections, we present the detail usage of the functions included in the <em>miRBaseConverter</em> package.</p>
@@ -133,7 +133,8 @@ version=checkMiRNAVersion(miRNANames, verbose = TRUE)
 ## 18     v18     98.67%  ***BEST Matched***
 ## 19     v19     90.83%                    
 ## 20     v20     82.83%                    
-## 21     v21      78.5%</code></pre>
+## 21     v21      78.5%                    
+## 22     v22     77.67%</code></pre>
 <p>The output text in console shows the matched proportions in all the miRBase version and gives the recommended version which is the best matched with the highest proportion values. This function is of great helpful miRNA version checking of a chunk of miRNAs.</p>
 </div>
 <div id="the-conversion-between-mirbase-accession-and-mirna-name" class="section level1">
@@ -155,15 +156,15 @@ result1[c(341:345),]
 ## 344 MIMAT0002885  osa-miR529a
 ## 345 MIMAT0011111         &lt;NA&gt;
 
-####2. Convert to the Accessions to miRNA names in miRBase version 21.
-result2 = miRNA_AccessionToName(Accessions,targetVersion = &quot;v21&quot;)
+####2. Convert to the Accessions to miRNA names in miRBase version 22.
+result2 = miRNA_AccessionToName(Accessions,targetVersion = &quot;v22&quot;)
 result2[c(341:345),]
-##        Accession    TargetName
-## 341 MIMAT0002843  hsa-miR-520b
-## 342 MIMAT0001650   mtr-miR399c
-## 343 MIMAT0000013 cel-miR-42-3p
-## 344 MIMAT0002885   osa-miR529a
-## 345 MIMAT0011111   mtr-miR169b</code></pre>
+##        Accession      TargetName
+## 341 MIMAT0002843 hsa-miR-520b-3p
+## 342 MIMAT0001650     mtr-miR399c
+## 343 MIMAT0000013   cel-miR-42-3p
+## 344 MIMAT0002885     osa-miR529a
+## 345 MIMAT0011111     mtr-miR169b</code></pre>
 </div>
 <div id="mirna-name-to-mirbase-accession" class="section level2">
 <h2><span class="header-section-number">3.2</span> miRNA Name to miRBase Accession</h2>
@@ -235,14 +236,14 @@ version=checkMiRNAVersion(miRNANames, verbose = FALSE)
 result1 = miRNA_NameToAccession(miRNANames,version = version)
 
 #### Step 3. miRBase Accessions to miRNA Names of the target version
-result2 = miRNA_AccessionToName(result1[,2],targetVersion = &quot;v21&quot;)
+result2 = miRNA_AccessionToName(result1[,2],targetVersion = &quot;v22&quot;)
 result2[c(341:345),]
-##        Accession    TargetName
-## 341 MIMAT0002843  hsa-miR-520b
-## 342 MIMAT0001650   mtr-miR399c
-## 343 MIMAT0000013 cel-miR-42-3p
-## 344 MIMAT0002885   osa-miR529a
-## 345 MIMAT0011111   mtr-miR169b</code></pre>
+##        Accession      TargetName
+## 341 MIMAT0002843 hsa-miR-520b-3p
+## 342 MIMAT0001650     mtr-miR399c
+## 343 MIMAT0000013   cel-miR-42-3p
+## 344 MIMAT0002885     osa-miR529a
+## 345 MIMAT0011111     mtr-miR169b</code></pre>
 </div>
 </div>
 <div id="the-conversion-between-precursor-and-mature-mirna" class="section level1">
@@ -271,7 +272,7 @@ miRNANames=c(&quot;pma-mir-100a&quot;,&quot;sko-mir-92a&quot;,&quot;hsa-mir-6131
 &quot;mmu-mir-153&quot;,&quot;mtr-MIR2592am&quot;,&quot;mml-mir-1239&quot;,&quot;xtr-mir-128-2&quot;,&quot;oan-mir-100&quot;,
 &quot;mmu-mir-378b&quot;,&quot;hsa-miR-508-5p&quot;,&quot;mmu-miR-434-3p&quot;)
 result2=miRNA_PrecursorToMature(miRNANames)
-## The input miRNA version information: miRBase v21
+## The input miRNA version information: miRBase v22
 head(result2)
 ##    OriginalName         Mature1         Mature2
 ## 1  pma-mir-100a pma-miR-100a-5p pma-miR-100a-3p
@@ -331,9 +332,9 @@ head(result1)
 ## 5 MIMAT0000159 UCUGGCUCCGUGUCUUCACUCCC
 ## 6 MIMAT0011068                    &lt;NA&gt;
 
-result2 = getMiRNASequence(Accessions,targetVersion = &quot;v21&quot;)
+result2 = getMiRNASequence(Accessions,targetVersion = &quot;v22&quot;)
 head(result2)
-##      Accession       miRNASequence_v21
+##      Accession       miRNASequence_v22
 ## 1 MIMAT0000017  UGUCAUGGAGUCGCUCUCUUCA
 ## 2 MIMAT0000054  UGAGAUCAUCGUGAAAGCUAGU
 ## 3 MIMAT0006584 UAGCCAAUGUCUUCUCUAUCAUG
@@ -343,45 +344,46 @@ head(result2)
 </div>
 <div id="retrieve-all-the-mirbase-version-information" class="section level2">
 <h2><span class="header-section-number">7.2</span> Retrieve all the miRBase version information</h2>
-<p>Currently, the latest <a href="http://www.mirbase.org">miRBase</a> version is 21 which was released in June 2014. In <em>miRBaseConverter</em> package, we implement a query function to check all the miRBase version information from miRBase version 1 to version 21. The return includes the information of the defined version names, release dates, the number of defined miRNAs (Entries including Precursors and Mature miRNAs) and the available status in <em>miRBaseConverter</em> package.</p>
+<p>Currently, the latest <a href="http://www.mirbase.org">miRBase</a> version is 22 which was released in March 2018. In <em>miRBaseConverter</em> package, we implement a query function to check all the miRBase version information from miRBase version 1 to version 22. The return includes the information of the defined version names, release dates, the number of defined miRNAs (Entries including Precursors and Mature miRNAs) and the available status in <em>miRBaseConverter</em> package.</p>
 <pre class="r"><code>library(miRBaseConverter)
 getAllVersionInfo()
-##    Version    Date Entries      Status
-## 1       v1 12/2002     218 Unavailable
-## 2     v1_1 01/2003     262 Unavailable
-## 3     v1_2 04/2003     295 Unavailable
-## 4     v1_3 05/2003     332 Unavailable
-## 5     v1_4 07/2003     345 Unavailable
-## 6       v2 07/2003     506 Unavailable
-## 7     v2_1 09/2003     558 Unavailable
-## 8     v2_2 11/2003     593 Unavailable
-## 9       v3 01/2004     719 Unavailable
-## 10    v3_1 04/2004     899 Unavailable
-## 11      v4 07/2004    1185 Unavailable
-## 12      v5 09/2004    1345 Unavailable
-## 13    v5_1 12/2004    1420 Unavailable
-## 14      v6 04/2005    1650   Available
-## 15      v7 06/2005    2909 Unavailable
-## 16    v7_1 10/2005    3424   Available
-## 17      v8 02/2006    3518   Available
-## 18    v8_1 05/2006    3963   Available
-## 19    v8_2 07/2006    4039   Available
-## 20      v9 10/2006    4361   Available
-## 21    v9_1 02/2007    4449   Available
-## 22    v9_2 05/2007    4584   Available
-## 23     v10 08/2007    5071   Available
-## 24   v10_1 12/2007    5395   Available
-## 25     v11 04/2008    6396   Available
-## 26     v12 09/2008    8619   Available
-## 27     v13 03/2009    9539   Available
-## 28     v14 09/2009   10883   Available
-## 29     v15 04/2010   14197   Available
-## 30     v16 08/2010   15172   Available
-## 31     v17 04/2011   16772   Available
-## 32     v18 11/2011   18226   Available
-## 33     v19 08/2012   21264   Available
-## 34     v20 06/2013   24521   Available
-## 35     v21 06/2014   28645   Available</code></pre>
+##    Version    Date      Status hairpin.precursors matures species
+## 1       v1 12/2002 Unavailable                218      NA      NA
+## 2     v1_1 01/2003 Unavailable                262      NA      NA
+## 3     v1_2 04/2003 Unavailable                295      NA      NA
+## 4     v1_3 05/2003 Unavailable                332      NA      NA
+## 5     v1_4 07/2003 Unavailable                345      NA      NA
+## 6       v2 07/2003 Unavailable                506      NA      NA
+## 7     v2_1 09/2003 Unavailable                558      NA      NA
+## 8     v2_2 11/2003 Unavailable                593      NA      NA
+## 9       v3 01/2004 Unavailable                719      NA      NA
+## 10    v3_1 04/2004 Unavailable                899      NA      NA
+## 11      v4 07/2004 Unavailable               1185      NA      NA
+## 12      v5 09/2004 Unavailable               1345      NA      NA
+## 13    v5_1 12/2004 Unavailable               1420      NA      NA
+## 14      v6 04/2005   Available               1650    1591      21
+## 15      v7 06/2005 Unavailable               2909      NA      NA
+## 16    v7_1 10/2005   Available               3424    3102      40
+## 17      v8 02/2006   Available               3518    3229      41
+## 18    v8_1 05/2006   Available               3963    3685      44
+## 19    v8_2 07/2006   Available               4039    3834      45
+## 20      v9 10/2006   Available               4361    4167      49
+## 21    v9_1 02/2007   Available               4449    4274      49
+## 22    v9_2 05/2007   Available               4584    4430      55
+## 23     v10 08/2007   Available               5071    4922      58
+## 24   v10_1 12/2007   Available               5395    5234      66
+## 25     v11 04/2008   Available               6396    6211      72
+## 26     v12 09/2008   Available               8619    8273      87
+## 27     v13 03/2009   Available               9539    9169     103
+## 28     v14 09/2009   Available              10883   10581     115
+## 29     v15 04/2010   Available              14197   15632     133
+## 30     v16 08/2010   Available              15172   17341     142
+## 31     v17 04/2011   Available              16772   19724     153
+## 32     v18 11/2011   Available              18226   21643     168
+## 33     v19 08/2012   Available              21264   25141     193
+## 34     v20 06/2013   Available              24521   30424     206
+## 35     v21 06/2014   Available              28645   35828     223
+## 36     v22 03/2018   Available              38589   48885     271</code></pre>
 </div>
 <div id="retrieve-all-the-available-species-in-mirbase" class="section level2">
 <h2><span class="header-section-number">7.3</span> Retrieve all the available species in miRBase</h2>
@@ -389,27 +391,27 @@ getAllVersionInfo()
 <pre class="r"><code>library(miRBaseConverter)
 allSpecies=getAllSpecies()
 head(allSpecies)
-##   Species              FullName
-## 1     aae         Aedes aegypti
-## 2     aau Acacia auriculiformis
-## 3     aca   Anolis carolinensis
-## 4     aga     Anopheles gambiae
-## 5     age      Ateles geoffroyi
-## 6     ahy      Arachis hypogaea</code></pre>
+##   Species division                          name                                                 tree NCBI-taxid
+## 1     aqu      AQU      Amphimedon queenslandica                                    Metazoa;Porifera;     400682
+## 2     nve      NVE        Nematostella vectensis                                    Metazoa;Cnidaria;      45351
+## 3     hma      HMA          Hydra magnipapillata                                    Metazoa;Cnidaria;       6085
+## 4     sko      SKO      Saccoglossus kowalevskii         Metazoa;Bilateria;Deuterostoma;Hemichordata;      10224
+## 5     spu      SPU Strongylocentrotus purpuratus        Metazoa;Bilateria;Deuterostoma;Echinodermata;       7668
+## 6     cin      CIN            Ciona intestinalis Metazoa;Bilateria;Deuterostoma;Chordata;Urochordata;       7719</code></pre>
 </div>
 <div id="retrieve-all-the-available-mirnas-in-the-specified-mirbase-version" class="section level2">
 <h2><span class="header-section-number">7.4</span> Retrieve all the available miRNAs in the specified miRBase version</h2>
 <p>In <em>miRBaseConverter</em> package, the function <code>getAllMiRNAs()</code> can be applied to get all miRNAs which are defined in each available miRBase version. Meanwhile, users can use the control parameters to custom the species and miRNA type in the output.</p>
 <pre class="r"><code>library(miRBaseConverter)
-miRNAs=getAllMiRNAs(version=&quot;v21&quot;, type=&quot;all&quot;, species=&quot;hsa&quot;)
+miRNAs=getAllMiRNAs(version=&quot;v22&quot;, type=&quot;all&quot;, species=&quot;hsa&quot;)
 head(miRNAs)
-##      Accession            Name                                                                            Sequence
-## 1    MI0000061    hsa-let-7a-2            AGGUUGAGGUAGUAGGUUGUAUAGUUUAGAAUUACAUCAAGGGAGAUAACUGUACAGCCUCCUAGCUUUCCU
-## 2 MIMAT0010195 hsa-let-7a-2-3p                                                              CUGUACAGCCUCCUAGCUUUCC
-## 3    MI0000062    hsa-let-7a-3          GGGUGAGGUAGUAGGUUGUAUAGUUUGGGGCUCUGCCCUGCUAUGGGAUAACUAUACAAUCUACUGUCUUUCCU
-## 4 MIMAT0004481   hsa-let-7a-3p                                                               CUAUACAAUCUACUGUCUUUC
-## 5 MIMAT0000062   hsa-let-7a-5p                                                              UGAGGUAGUAGGUUGUAUAGUU
-## 6    MI0000063      hsa-let-7b CGGGGUGAGGUAGUAGGUUGUGUGGUUUCAGGGCAGUGAUGUUGCCCCUCGGAAGAUAACUAUACAACCUACUGCCUUCCCUG</code></pre>
+##      Accession            Name                                                                         Sequence
+## 1    MI0000060    hsa-let-7a-1 UGGGAUGAGGUAGUAGGUUGUAUAGUUUUAGGGUCACACCCACCACUGGGAGAUAACUAUACAAUCUACUGUCUUUCCUA
+## 2    MI0000061    hsa-let-7a-2         AGGUUGAGGUAGUAGGUUGUAUAGUUUAGAAUUACAUCAAGGGAGAUAACUGUACAGCCUCCUAGCUUUCCU
+## 3 MIMAT0010195 hsa-let-7a-2-3p                                                           CUGUACAGCCUCCUAGCUUUCC
+## 4    MI0000062    hsa-let-7a-3       GGGUGAGGUAGUAGGUUGUAUAGUUUGGGGCUCUGCCCUGCUAUGGGAUAACUAUACAAUCUACUGUCUUUCCU
+## 5 MIMAT0004481   hsa-let-7a-3p                                                            CUAUACAAUCUACUGUCUUUC
+## 6 MIMAT0000062   hsa-let-7a-5p                                                           UGAGGUAGUAGGUUGUAUAGUU</code></pre>
 </div>
 <div id="retrieve-all-the-history-information-of-a-single-mirna" class="section level2">
 <h2><span class="header-section-number">7.5</span> Retrieve all the history information of a single miRNA</h2>
@@ -441,7 +443,8 @@ result2
 ## v18   hsa-mir-26b CCGGGACCCAGUUCAAGUAAUUCAGGAUAGGUUGUGUGCUGUCCAGCCUGUUCUCCAUUACUUGGCUCGGGGACCGG hsa-miR-26b-5p  UUCAAGUAAUUCAGGAUAGGU hsa-miR-26b-3p CCUGUUCUCCAUUACUUGGCUC UNCHANGED
 ## v19   hsa-mir-26b CCGGGACCCAGUUCAAGUAAUUCAGGAUAGGUUGUGUGCUGUCCAGCCUGUUCUCCAUUACUUGGCUCGGGGACCGG hsa-miR-26b-5p  UUCAAGUAAUUCAGGAUAGGU hsa-miR-26b-3p CCUGUUCUCCAUUACUUGGCUC UNCHANGED
 ## v20   hsa-mir-26b CCGGGACCCAGUUCAAGUAAUUCAGGAUAGGUUGUGUGCUGUCCAGCCUGUUCUCCAUUACUUGGCUCGGGGACCGG hsa-miR-26b-5p  UUCAAGUAAUUCAGGAUAGGU hsa-miR-26b-3p CCUGUUCUCCAUUACUUGGCUC UNCHANGED
-## v21   hsa-mir-26b CCGGGACCCAGUUCAAGUAAUUCAGGAUAGGUUGUGUGCUGUCCAGCCUGUUCUCCAUUACUUGGCUCGGGGACCGG hsa-miR-26b-5p  UUCAAGUAAUUCAGGAUAGGU hsa-miR-26b-3p CCUGUUCUCCAUUACUUGGCUC UNCHANGED</code></pre>
+## v21   hsa-mir-26b CCGGGACCCAGUUCAAGUAAUUCAGGAUAGGUUGUGUGCUGUCCAGCCUGUUCUCCAUUACUUGGCUCGGGGACCGG hsa-miR-26b-5p  UUCAAGUAAUUCAGGAUAGGU hsa-miR-26b-3p CCUGUUCUCCAUUACUUGGCUC UNCHANGED
+## v22   hsa-mir-26b CCGGGACCCAGUUCAAGUAAUUCAGGAUAGGUUGUGUGCUGUCCAGCCUGUUCUCCAUUACUUGGCUCGGGGACCGG hsa-miR-26b-5p  UUCAAGUAAUUCAGGAUAGGU hsa-miR-26b-3p  CCUGUUCUCCAUUACUUGGCU UNCHANGED</code></pre>
 <pre class="r"><code>#### 2. The input is miRNA Accession Id
 Accession = &quot;MIMAT0000765&quot;
 result3 = getMiRNAHistory(Accession)
@@ -467,21 +470,22 @@ result3
 ## v18   hsa-mir-335 UGUUUUGAGCGGGGGUCAAGAGCAAUAACGAAAAAUGUUUGUCAUAAACCGUUUUUCAUUAUUGCUCCUGACCUCCUCUCAUUUGCUAUAUUCA hsa-miR-335-5p UCAAGAGCAAUAACGAAAAAUGU hsa-miR-335-3p UUUUUCAUUAUUGCUCCUGACC UNCHANGED
 ## v19   hsa-mir-335 UGUUUUGAGCGGGGGUCAAGAGCAAUAACGAAAAAUGUUUGUCAUAAACCGUUUUUCAUUAUUGCUCCUGACCUCCUCUCAUUUGCUAUAUUCA hsa-miR-335-5p UCAAGAGCAAUAACGAAAAAUGU hsa-miR-335-3p UUUUUCAUUAUUGCUCCUGACC UNCHANGED
 ## v20   hsa-mir-335 UGUUUUGAGCGGGGGUCAAGAGCAAUAACGAAAAAUGUUUGUCAUAAACCGUUUUUCAUUAUUGCUCCUGACCUCCUCUCAUUUGCUAUAUUCA hsa-miR-335-5p UCAAGAGCAAUAACGAAAAAUGU hsa-miR-335-3p UUUUUCAUUAUUGCUCCUGACC UNCHANGED
-## v21   hsa-mir-335 UGUUUUGAGCGGGGGUCAAGAGCAAUAACGAAAAAUGUUUGUCAUAAACCGUUUUUCAUUAUUGCUCCUGACCUCCUCUCAUUUGCUAUAUUCA hsa-miR-335-5p UCAAGAGCAAUAACGAAAAAUGU hsa-miR-335-3p UUUUUCAUUAUUGCUCCUGACC UNCHANGED</code></pre>
+## v21   hsa-mir-335 UGUUUUGAGCGGGGGUCAAGAGCAAUAACGAAAAAUGUUUGUCAUAAACCGUUUUUCAUUAUUGCUCCUGACCUCCUCUCAUUUGCUAUAUUCA hsa-miR-335-5p UCAAGAGCAAUAACGAAAAAUGU hsa-miR-335-3p UUUUUCAUUAUUGCUCCUGACC UNCHANGED
+## v22   hsa-mir-335 UGUUUUGAGCGGGGGUCAAGAGCAAUAACGAAAAAUGUUUGUCAUAAACCGUUUUUCAUUAUUGCUCCUGACCUCCUCUCAUUUGCUAUAUUCA hsa-miR-335-5p UCAAGAGCAAUAACGAAAAAUGU hsa-miR-335-3p UUUUUCAUUAUUGCUCCUGACC UNCHANGED</code></pre>
 </div>
 <div id="retrieve-the-data-table-for-the-specified-mirbase-version" class="section level2">
 <h2><span class="header-section-number">7.6</span> Retrieve the data table for the specified miRBase version</h2>
 <p>There is a data table for presenting the detailed information of the defined miRNAs in each miRBase version. In <em>miRBaseConverter</em> package, we provide a function <code>getMiRNATable()</code> to return the miRNA data table for each miRBase version. Meanwhile, users can use the control parameter to custom the species in output.</p>
 <pre class="r"><code>library(miRBaseConverter)
-miRNA_Tab=getMiRNATable(version=&quot;v21&quot;,species=&quot;hsa&quot;)
+miRNA_Tab=getMiRNATable(version=&quot;v22&quot;,species=&quot;hsa&quot;)
 head(miRNA_Tab)
-##       Precursor_Acc    Precursor    Status                                                                           Precursor_Seq  Mature1_Acc       Mature1            Mature1_Seq  Mature2_Acc         Mature2            Mature2_Seq
-## 12741     MI0000060 hsa-let-7a-1 UNCHANGED        UGGGAUGAGGUAGUAGGUUGUAUAGUUUUAGGGUCACACCCACCACUGGGAGAUAACUAUACAAUCUACUGUCUUUCCUA MIMAT0000062 hsa-let-7a-5p UGAGGUAGUAGGUUGUAUAGUU MIMAT0004481   hsa-let-7a-3p  CUAUACAAUCUACUGUCUUUC
-## 12742     MI0000061 hsa-let-7a-2 UNCHANGED                AGGUUGAGGUAGUAGGUUGUAUAGUUUAGAAUUACAUCAAGGGAGAUAACUGUACAGCCUCCUAGCUUUCCU MIMAT0000062 hsa-let-7a-5p UGAGGUAGUAGGUUGUAUAGUU MIMAT0010195 hsa-let-7a-2-3p CUGUACAGCCUCCUAGCUUUCC
-## 12743     MI0000062 hsa-let-7a-3 UNCHANGED              GGGUGAGGUAGUAGGUUGUAUAGUUUGGGGCUCUGCCCUGCUAUGGGAUAACUAUACAAUCUACUGUCUUUCCU MIMAT0000062 hsa-let-7a-5p UGAGGUAGUAGGUUGUAUAGUU MIMAT0004481   hsa-let-7a-3p  CUAUACAAUCUACUGUCUUUC
-## 12744     MI0000063   hsa-let-7b UNCHANGED     CGGGGUGAGGUAGUAGGUUGUGUGGUUUCAGGGCAGUGAUGUUGCCCCUCGGAAGAUAACUAUACAACCUACUGCCUUCCCUG MIMAT0000063 hsa-let-7b-5p UGAGGUAGUAGGUUGUGUGGUU MIMAT0004482   hsa-let-7b-3p CUAUACAACCUACUGCCUUCCC
-## 12745     MI0000064   hsa-let-7c UNCHANGED    GCAUCCGGGUUGAGGUAGUAGGUUGUAUGGUUUAGAGUUACACCCUGGGAGUUAACUGUACAACCUUCUAGCUUUCCUUGGAGC MIMAT0000064 hsa-let-7c-5p UGAGGUAGUAGGUUGUAUGGUU MIMAT0026472   hsa-let-7c-3p CUGUACAACCUUCUAGCUUUCC
-## 12746     MI0000065   hsa-let-7d UNCHANGED CCUAGGAAGAGGUAGUAGGUUGCAUAGUUUUAGGGCAGGGAUUUUGCCCACAAGGAGGUAACUAUACGACCUGCUGCCUUUCUUAGG MIMAT0000065 hsa-let-7d-5p AGAGGUAGUAGGUUGCAUAGUU MIMAT0004484   hsa-let-7d-3p CUAUACGACCUGCUGCCUUUCU</code></pre>
+##    Precursor_Acc    Precursor    Status                                                                           Precursor_Seq  Mature1_Acc       Mature1            Mature1_Seq  Mature2_Acc         Mature2            Mature2_Seq
+## 58     MI0000060 hsa-let-7a-1 UNCHANGED        UGGGAUGAGGUAGUAGGUUGUAUAGUUUUAGGGUCACACCCACCACUGGGAGAUAACUAUACAAUCUACUGUCUUUCCUA MIMAT0000062 hsa-let-7a-5p UGAGGUAGUAGGUUGUAUAGUU MIMAT0004481   hsa-let-7a-3p  CUAUACAAUCUACUGUCUUUC
+## 59     MI0000061 hsa-let-7a-2 UNCHANGED                AGGUUGAGGUAGUAGGUUGUAUAGUUUAGAAUUACAUCAAGGGAGAUAACUGUACAGCCUCCUAGCUUUCCU MIMAT0000062 hsa-let-7a-5p UGAGGUAGUAGGUUGUAUAGUU MIMAT0010195 hsa-let-7a-2-3p CUGUACAGCCUCCUAGCUUUCC
+## 60     MI0000062 hsa-let-7a-3 UNCHANGED              GGGUGAGGUAGUAGGUUGUAUAGUUUGGGGCUCUGCCCUGCUAUGGGAUAACUAUACAAUCUACUGUCUUUCCU MIMAT0000062 hsa-let-7a-5p UGAGGUAGUAGGUUGUAUAGUU MIMAT0004481   hsa-let-7a-3p  CUAUACAAUCUACUGUCUUUC
+## 61     MI0000063   hsa-let-7b UNCHANGED     CGGGGUGAGGUAGUAGGUUGUGUGGUUUCAGGGCAGUGAUGUUGCCCCUCGGAAGAUAACUAUACAACCUACUGCCUUCCCUG MIMAT0000063 hsa-let-7b-5p UGAGGUAGUAGGUUGUGUGGUU MIMAT0004482   hsa-let-7b-3p CUAUACAACCUACUGCCUUCCC
+## 62     MI0000064   hsa-let-7c UNCHANGED    GCAUCCGGGUUGAGGUAGUAGGUUGUAUGGUUUAGAGUUACACCCUGGGAGUUAACUGUACAACCUUCUAGCUUUCCUUGGAGC MIMAT0000064 hsa-let-7c-5p UGAGGUAGUAGGUUGUAUGGUU MIMAT0026472   hsa-let-7c-3p CUGUACAACCUUCUAGCUUUCC
+## 63     MI0000065   hsa-let-7d UNCHANGED CCUAGGAAGAGGUAGUAGGUUGCAUAGUUUUAGGGCAGGGAUUUUGCCCACAAGGAGGUAACUAUACGACCUGCUGCCUUUCUUAGG MIMAT0000065 hsa-let-7d-5p AGAGGUAGUAGGUUGCAUAGUU MIMAT0004484   hsa-let-7d-3p CUAUACGACCUGCUGCCUUUCU</code></pre>
 </div>
 </div>
 <div id="the-online-retrieving-of-mirna-information" class="section level1">

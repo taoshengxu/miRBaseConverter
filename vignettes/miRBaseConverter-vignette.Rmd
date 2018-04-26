@@ -33,9 +33,9 @@ knitr::opts_chunk$set(collapse = TRUE)
 ```
 
 # Overview
-***miRBaseConverter*** is an R/Bioconductor package for converting and retrieving the definition of miRNAs ( Names, Accessions, Sequences, Families and others) in different [miRBase](http://www.mirbase.org) versions ( From miRBase version 6 to version 21 [ The latest version ] ). A tiny built-in database is embedded in the *miRBaseConverter* R package for retrieving miRNA information efficiently.
+***miRBaseConverter*** is an R/Bioconductor package for converting and retrieving the definition of miRNAs ( Names, Accessions, Sequences, Families and others) in different [miRBase](http://www.mirbase.org) versions ( From miRBase version 6 to version 22 [ The latest version ] ). A tiny built-in database is embedded in the *miRBaseConverter* R package for retrieving miRNA information efficiently.
 
-_microRNAs( miRNAs)_ are one of the essential molecules that play the important role in the post-transcriptional gene regulation. The studies about novel miRNA and their function discoveries have an explosive growth in the last decade. The [miRBase](http://www.mirbase.org) database is the authority archive of miRNA annotations and sequences for all species. With the development of researches about miRNAs, the annotation of miRNA has been changed significantly and develops many different historical versions. Each of the previous versions has been adopted in many research literatures and databases. Due to the inconsistent of name annotation of miRNAs, there is a barrier for the later scholars to reuse the previous research results in a convenient way, especially for miRNA databases with thousands of entries. There are some webservers or R-based tools can handle the batch conversion of miRNA names. However, an easy-to-use and well-documented tool for miRNA conversion and information retrieval is still lack.   We present the *miRBaseConverter* R package, a comprehensive tool for miRNA research, to provide a suite of tools for checking miRNA Name, Accession, Sequence, version and family and history information. The *miRBaseConverter* package can be competent for all species including Precursor and Mature miRNAs defined in miRBase.
+_microRNAs( miRNAs)_ are one of the essential molecules that play the important role in the post-transcriptional gene regulation. The studies about novel miRNA and their function discoveries have an explosive growth in the last decade. The [miRBase](http://www.mirbase.org) database is the authority archive of miRNA annotations and sequences for all species. With the development of researches about miRNAs, the annotation of miRNA has been changed significantly and develops many different historical versions. Each of the previous versions has been adopted in many research literatures and databases. Due to the inconsistent of name annotation of miRNAs, there is a barrier for the later scholars to reuse the previous research results in a convenient way, especially for miRNA databases with thousands of entries. There are some webservers or R-based tools can handle the batch conversion of miRNA names. However, an easy-to-use and well-documented tool for miRNA conversion and information retrieval is still lack. We present the *miRBaseConverter* R package, a comprehensive tool for miRNA research, to provide a suite of tools for checking miRNA Name, Accession, Sequence, version and family and history information. The *miRBaseConverter* package can be competent for all species including Precursor and Mature miRNAs defined in miRBase.
 
 In addtion, we also develop an online application with interactive interface for this package which can be accessed in
 [https://taoshengxu.shinyapps.io/miRBaseConverter/](https://taoshengxu.shinyapps.io/miRBaseConverter/).
@@ -68,8 +68,8 @@ Accessions = miRNATest$Accession
 result1 = miRNA_AccessionToName(Accessions,targetVersion = "v13")
 result1[c(341:345),]
 
-####2. Convert to the Accessions to miRNA names in miRBase version 21.
-result2 = miRNA_AccessionToName(Accessions,targetVersion = "v21")
+####2. Convert to the Accessions to miRNA names in miRBase version 22.
+result2 = miRNA_AccessionToName(Accessions,targetVersion = "v22")
 result2[c(341:345),]
 ```
 
@@ -123,7 +123,7 @@ version=checkMiRNAVersion(miRNANames, verbose = FALSE)
 result1 = miRNA_NameToAccession(miRNANames,version = version)
 
 #### Step 3. miRBase Accessions to miRNA Names of the target version
-result2 = miRNA_AccessionToName(result1[,2],targetVersion = "v21")
+result2 = miRNA_AccessionToName(result1[,2],targetVersion = "v22")
 result2[c(341:345),]
 ```
 
@@ -180,13 +180,13 @@ Accessions = miRNATest$Accession
 result1 = getMiRNASequence(Accessions,targetVersion = "v13")
 head(result1)
 
-result2 = getMiRNASequence(Accessions,targetVersion = "v21")
+result2 = getMiRNASequence(Accessions,targetVersion = "v22")
 head(result2)
 ```
 
 ## Retrieve all the miRBase version information
 
-Currently, the latest [miRBase](http://www.mirbase.org) version is 21 which was released in June 2014. In *miRBaseConverter* package, we implement a query function to check all the miRBase version information from miRBase version 1 to version 21. The return includes the information of the defined version names, release dates, the number of defined miRNAs (Entries including Precursors and Mature miRNAs) and the available status in  *miRBaseConverter* package.
+Currently, the latest [miRBase](http://www.mirbase.org) version is 22 which was released in March 2018. In *miRBaseConverter* package, we implement a query function to check all the miRBase version information from miRBase version 1 to version 22. The return includes the information of the defined version names, release dates, the number of defined miRNAs (Entries including Precursors and Mature miRNAs) and the available status in  *miRBaseConverter* package.
 
 ```{r}
 library(miRBaseConverter)
@@ -209,7 +209,7 @@ In *miRBaseConverter* package, the function `getAllMiRNAs()` can be applied to g
 
 ```{r}
 library(miRBaseConverter)
-miRNAs=getAllMiRNAs(version="v21", type="all", species="hsa")
+miRNAs=getAllMiRNAs(version="v22", type="all", species="hsa")
 head(miRNAs)
 ```
 
@@ -237,7 +237,7 @@ There is a data table for presenting the detailed information of the defined miR
 
 ```{r}
 library(miRBaseConverter)
-miRNA_Tab=getMiRNATable(version="v21",species="hsa")
+miRNA_Tab=getMiRNATable(version="v22",species="hsa")
 head(miRNA_Tab)
 ```
 

@@ -7,7 +7,7 @@
 #' Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 #' The optional values are in below:\cr
 #' "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-#' "v15","v16","v17","v18","v19","v20","v21"\cr
+#' "v15","v16","v17","v18","v19","v20","v21","v22"\cr
 #' @param exact Logical value. If true, the result will be the most exactly matched result.
 #'  If FALSE, the result will include all the possible matched miRNA name. If one miRNA can match multiple names. All the matched names are
 #'   concatenated with "&".
@@ -26,16 +26,16 @@
 #' data(miRNATest)
 #' miRNANames=miRNATest$miRNA_Name
 #' result1=miRNAVersionConvert(miRNANames,targetVersion="v13",exact=TRUE,verbose=TRUE)
-#' result2=miRNAVersionConvert(miRNANames,targetVersion="v21",exact=TRUE,verbose=TRUE)
-#' result3=miRNAVersionConvert(miRNANames,targetVersion="v21",exact=FALSE,verbose=TRUE)
+#' result2=miRNAVersionConvert(miRNANames,targetVersion="v22",exact=TRUE,verbose=TRUE)
+#' result3=miRNAVersionConvert(miRNANames,targetVersion="v22",exact=FALSE,verbose=TRUE)
 #'
 #' miRNANames=c( "hsa-let-7c","hsa-miR-3190-3p","hsa-let-7c","hsa-miR-34b","hsa-miR-378",
 #' "hsa-miR-499a-3p","hsa-miR-499a-5p","hsa-miR-500","hsa-miR-516a-5p","hsa-miR-550","hsa-miR-589")
-#' result4=miRNAVersionConvert(miRNANames, targetVersion="v21", exact=TRUE, verbose=TRUE)
+#' result4=miRNAVersionConvert(miRNANames, targetVersion="v22", exact=TRUE, verbose=TRUE)
 #' @author
 #' Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
-miRNAVersionConvert <-function(miRNANames,targetVersion="v21",exact=TRUE,verbose=TRUE)
+miRNAVersionConvert <-function(miRNANames,targetVersion="v22",exact=TRUE,verbose=TRUE)
 {
   miRNANames=as.character(miRNANames)
   miRNANames=gsub(" ","",miRNANames)##Remove the possible space
@@ -99,7 +99,7 @@ miRNAVersionConvert <-function(miRNANames,targetVersion="v21",exact=TRUE,verbose
 #' The optional values are in below:\cr
 #' "v6","v7_1","v8","v8_1","v8_2","v9","v9_1",\cr
 #' "v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-#' "v15","v16","v17","v18","v19","v20","v21"\cr
+#' "v15","v16","v17","v18","v19","v20","v21","v22"\cr
 #' @return
 #' A nx2 data frame. The number of rows equal to the input miRNA names. The two columns are defined as below:
 #'\itemize{
@@ -110,13 +110,13 @@ miRNAVersionConvert <-function(miRNANames,targetVersion="v21",exact=TRUE,verbose
 #' data(miRNATest)
 #' Accessions=miRNATest$Accession
 #' result1=miRNA_AccessionToName(Accessions,targetVersion="v13")
-#' result2=miRNA_AccessionToName(Accessions,targetVersion="v21")
+#' result2=miRNA_AccessionToName(Accessions,targetVersion="v22")
 #'
 #' @author
 #'  Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
 #'
-miRNA_AccessionToName<-function(Accessions,targetVersion="v21")
+miRNA_AccessionToName<-function(Accessions,targetVersion="v22")
 {
   Accessions=as.character(Accessions)
   Accessions=gsub(" ","",Accessions)##Remove the possible space
@@ -144,7 +144,7 @@ miRNA_AccessionToName<-function(Accessions,targetVersion="v21")
 #' Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 #' The optional values are in below:\cr
 #' "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-#' "v15","v16","v17","v18","v19","v20","v21"\cr
+#' "v15","v16","v17","v18","v19","v20","v21","v22"\cr
 #' @return
 #' A nx2 data frame. The number of rows equal to the input miRNA names. The two columns are defined as below:
 #'
@@ -157,14 +157,14 @@ miRNA_AccessionToName<-function(Accessions,targetVersion="v21")
 #' miRNANames=miRNATest$miRNA_Name
 #' version=checkMiRNAVersion(miRNANames,verbose=TRUE)
 #' result1=miRNA_NameToAccession(miRNANames,version=version)
-#' result2=miRNA_AccessionToName(result1[,2],targetVersion="v21")
-#' result3=miRNAVersionConvert(miRNANames,targetVersion="v21",exact=TRUE)
+#' result2=miRNA_AccessionToName(result1[,2],targetVersion="v22")
+#' result3=miRNAVersionConvert(miRNANames,targetVersion="v22",exact=TRUE)
 #'
 #' @author
 #'  Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
 #'
-miRNA_NameToAccession<-function(miRNANames,version="v21")
+miRNA_NameToAccession<-function(miRNANames,version="v22")
 {
   miRNANames=as.character(miRNANames)
   miRNANames=gsub(" ","",miRNANames)##Remove the possible space
@@ -192,7 +192,7 @@ miRNA_NameToAccession<-function(miRNANames,version="v21")
 #'  Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 #' The optional values are in below:\cr
 #' "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-#' "v15","v16","v17","v18","v19","v20","v21"\cr
+#' "v15","v16","v17","v18","v19","v20","v21","v22"\cr
 #' @return
 #' A nx2 data frame. The number of row equals to input miRNAs. The two columns are defined as below:
 #'
@@ -205,20 +205,20 @@ miRNA_NameToAccession<-function(miRNANames,version="v21")
 #' data(miRNATest)
 #' Accessions=miRNATest$Accession
 #' result1=getMiRNASequence(Accessions,targetVersion="v13")
-#' result2=getMiRNASequence(Accessions,targetVersion="v21")
+#' result2=getMiRNASequence(Accessions,targetVersion="v22")
 #'
 #' #####2, The input are miRNA Names
 #' data(miRNATest)
 #' miRNANames=miRNATest$miRNA_Name
-#' result3=miRNAVersionConvert(miRNANames,targetVersion="v21",exact=TRUE)
-#' Accessions=result3[,3]
-#' result4=getMiRNASequence(Accessions,targetVersion="v21")
+#' result3=miRNAVersionConvert(miRNANames,targetVersion="v22",exact=TRUE)
+#' Accessions=result3$Accession
+#' result4=getMiRNASequence(Accessions,targetVersion="v22")
 #'
 #' @author
 #' Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
 #'
-getMiRNASequence<-function(Accessions,targetVersion="v21")
+getMiRNASequence<-function(Accessions,targetVersion="v22")
 {
   Accessions=as.character(Accessions)
   Accessions=gsub(" ","",Accessions)##Remove the possible space
@@ -245,13 +245,13 @@ getMiRNASequence<-function(Accessions,targetVersion="v21")
 #' @param Accession A character representing the single Accession.
 #'
 #' @return
-#'  A data frame (21X7) including all the history information (Precursor, Mature, Sequence) of the specified miRNA.
+#'  A data frame including all the history information (Precursor, Mature, Sequence) of the specified miRNA.
 #'  Each row represents a miRBase version.
 #' @examples
 #' #####1,The input is a miRNA Name
 #' miRNAName="hsa-miR-26b-5p"
-#' result1=miRNA_NameToAccession(miRNAName,version="v21")
-#' Accession=result1[,2]
+#' result1=miRNA_NameToAccession(miRNAName,version="v22")
+#' Accession=result1$Accession
 #' result2=getMiRNAHistory(Accession)
 #'
 #' #####2,The input is miRNA Accession
@@ -436,7 +436,7 @@ getAllVersionInfo<-function()
 getAllSpecies<-function()
 {
   SPE1=SPE
-  colnames(SPE1)<-c("Species","FullName")
+  colnames(SPE1)[1]<-"Species"
   SPE1
 }
 
@@ -448,12 +448,12 @@ getAllSpecies<-function()
 #' retrieval. Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 #' The optional values are in below:\cr
 #' "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-#' "v15","v16","v17","v18","v19","v20","v21"\cr
+#' "v15","v16","v17","v18","v19","v20","v21","v22"\cr
 #' @param species A character value representing the abbreviation of species.  Users can apply
 #' the function \strong{getAllSpecies()} to get the available  abbreviation of species. If species is set
 #' to \strong{"all"}, the miRNAs of all species will return.
 #' @examples
-#' miRNA_Tab=getMiRNATable(version="v21",species="hsa")
+#' miRNA_Tab=getMiRNATable(version="v22",species="hsa")
 #' @return
 #' A data frame
 #'
@@ -461,7 +461,7 @@ getAllSpecies<-function()
 #' Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
 #'
-getMiRNATable<-function(version="v21",species="all")
+getMiRNATable<-function(version="v22",species="all")
 {
   ver_index=match(tolower(version),VER)
   if (is.na(ver_index))
@@ -473,7 +473,7 @@ getMiRNATable<-function(version="v21",species="all")
   }
   else
   {
-    spe_index=match(species,SPE$SPE)
+    spe_index=match(species,SPE$organism)
     if(is.na(spe_index))
       stop("It is a wrong species abbreviation, Please check it")
     miRNA_Tab=miRNA_Tab[which(spe_index==miRNA_Tab$Species),]
@@ -545,7 +545,7 @@ checkMiRNAAlive<-function(Accessions, verbose=TRUE)
 #' The optional values are in below:\cr
 #' "v6","v7_1","v8","v8_1","v8_2","v9","v9_1",\cr
 #' "v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-#' "v15","v16","v17","v18","v19","v20","v21"\cr
+#' "v15","v16","v17","v18","v19","v20","v21","v22"\cr
 #' @param species A character value representing the abbreviation of species.  Users can apply
 #' the \strong{getAllSpecies()} function to get the available  abbreviation of species. If species is set
 #' to \strong{"all"}, the miRNAs of all species will return.
@@ -556,7 +556,7 @@ checkMiRNAAlive<-function(Accessions, verbose=TRUE)
 #' \item \strong{"all"} : precursor and mature \cr
 #' }
 #' @examples
-#' miRNAs=getAllMiRNAs(version="v21", type="all", species="hsa")
+#' miRNAs=getAllMiRNAs(version="v22", type="all", species="hsa")
 #' @return
 #' A data frame with three columns. The three columns are defined as below:
 #' \itemize{
@@ -568,7 +568,7 @@ checkMiRNAAlive<-function(Accessions, verbose=TRUE)
 #' Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
 #'
-getAllMiRNAs<-function(version="v21",type="all",species="all")
+getAllMiRNAs<-function(version="v22",type="all",species="all")
 {
   ver_index=match(tolower(version),VER)
   if (is.na(ver_index))
@@ -580,7 +580,7 @@ getAllMiRNAs<-function(version="v21",type="all",species="all")
   }
   else
   {
-    spe_index=match(species,SPE$SPE)
+    spe_index=match(species,SPE$organism)
     if(is.na(spe_index))
       stop("It is a wrong species abbreviation, Please check it")
     MiRNAs=MiRNAs[which(spe_index==MiRNAs$Species),]
@@ -612,7 +612,7 @@ getAllMiRNAs<-function(version="v21",type="all",species="all")
     stop("It is a wrong miRNA type parameter, Please check it")
 
   #MiRNAs=na.omit(MiRNAs)
-  ind <- apply(MiRNAs, 1, function(x) all(is.na(x)))
+  ind <-which(apply(MiRNAs, 1, function(x) all(is.na(x))))
   MiRNAs=MiRNAs[-ind,]
   MiRNAs=unique(MiRNAs)
 
@@ -635,7 +635,7 @@ getAllMiRNAs<-function(version="v21",type="all",species="all")
 #' Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 #' The optional values are in below:\cr
 #' "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-#' "v15","v16","v17","v18","v19","v20","v21".\cr
+#' "v15","v16","v17","v18","v19","v20","v21","v22"\cr
 #' @return
 #' A data frame(nx3). The number of rows equal to the input miRNA names. The three columns are defined as below:
 #' \itemize{
@@ -701,7 +701,7 @@ miRNA_PrecursorToMature<-function(miRNANames,version=NULL)
 #' Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 #' The optional values are in below:\cr
 #' "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-#' "v15","v16","v17","v18","v19","v20","v21".\cr
+#' "v15","v16","v17","v18","v19","v20","v21","v22"\cr
 #' @return
 #' A data frame(nx2). The number of rows equal to the input miRNA Names. The two columns are defined as below:
 #' \itemize{
@@ -795,7 +795,8 @@ checkMiRNAFamliy<-function(Accessions)
   miRNANames=miRNA_AccessionToName(uid)
   ACC_ID=match(uid,ACC)
 
-  VMAP <-miRNA_data[[length(VER)]][,c(1,5,8,12)]
+  #v21
+  VMAP <-miRNA_data[[21]][,c(1,5,8,12)]
   ind=apply(VMAP,2,function(x){match(ACC_ID,x)})
   ind[which(is.na(ind[,1])),1]=ind[which(is.na(ind[,1])),2]
   ind[which(is.na(ind[,1])),1]=ind[which(is.na(ind[,1])),3]
@@ -857,20 +858,26 @@ goTo_miRNAFamily<-function(FamilyAccessions, verbose = TRUE)
 }
 
 ###internal function
-.getmiRNAs<-function(version="v21")
+.getmiRNAs<-function(version="v22")
 {
   ver_index=match(tolower(version),VER)
   if (is.na(ver_index))
     stop("It is a wrong version name, Please check it")
-  MiRNAs <- as.matrix(miRNA_data[[ver_index]])
-  MiRNAs=rbind(MiRNAs[,c(1,2,4)],MiRNAs[,c(5,6,7)],MiRNAs[,c(8,9,10)])
-  colnames(MiRNAs)=c("ACC","SYM","SEQ")
+  #MiRNAs <- as.matrix(miRNA_data[[ver_index]])
+  MiRNAs <- miRNA_data[[ver_index]]
+  Precursor=MiRNAs[,c(1,2,4)]
+  Mature1=MiRNAs[,c(5,6,7)]
+  Mature2=MiRNAs[,c(8,9,10)]
+  colnames(Precursor)=c("ACC","SYM","SEQ")
+  colnames(Mature1)=c("ACC","SYM","SEQ")
+  colnames(Mature2)=c("ACC","SYM","SEQ")
+  MiRNAs=rbind.data.frame(Precursor,Mature1,Mature2)
+
   #MiRNAs=na.omit(MiRNAs)
   ##check the rows with all NA
-  ind <- apply(MiRNAs, 1, function(x) all(is.na(x)))
+  ind <- which(apply(MiRNAs, 1, function(x) all(is.na(x))))
   MiRNAs=MiRNAs[-ind,]
-
   MiRNAs=unique(MiRNAs)
-  MiRNAs=as.data.frame(MiRNAs)
+  #MiRNAs=as.data.frame(MiRNAs,stringsAsFactors=FALSE)
   MiRNAs
 }

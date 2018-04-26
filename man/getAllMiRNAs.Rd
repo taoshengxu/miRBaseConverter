@@ -4,7 +4,7 @@
 \alias{getAllMiRNAs}
 \title{Get all miRNAs in the specified miRBase version}
 \usage{
-getAllMiRNAs(version = "v21", type = "all", species = "all")
+getAllMiRNAs(version = "v22", type = "all", species = "all")
 }
 \arguments{
 \item{version}{A character value representing the specified miRBase version for
@@ -12,7 +12,7 @@ retrieval. Users can apply the function \strong{getAllVersionInfo()} to get the 
 The optional values are in below:\cr
 "v6","v7_1","v8","v8_1","v8_2","v9","v9_1",\cr
 "v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-"v15","v16","v17","v18","v19","v20","v21"\cr}
+"v15","v16","v17","v18","v19","v20","v21","v22"\cr}
 
 \item{type}{A character value representing the miRNA type for retrieval.
 \itemize{
@@ -37,7 +37,7 @@ A data frame with three columns. The three columns are defined as below:
 This function gets all miRNAs in the specified miRBase version.
 }
 \examples{
-miRNAs=getAllMiRNAs(version="v21", type="all", species="hsa")
+miRNAs=getAllMiRNAs(version="v22", type="all", species="hsa")
 }
 \author{
 Xu, Taosheng \email{taosheng.x@gmail.com}

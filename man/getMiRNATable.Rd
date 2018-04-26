@@ -4,14 +4,14 @@
 \alias{getMiRNATable}
 \title{Get the full miRNAs information table of the specified miRBase version}
 \usage{
-getMiRNATable(version = "v21", species = "all")
+getMiRNATable(version = "v22", species = "all")
 }
 \arguments{
 \item{version}{A character value representing the specified miRBase version for
 retrieval. Users can apply the function \strong{getAllVersionInfo()} to get the available miRNA version names.
 The optional values are in below:\cr
 "v6","v7_1","v8","v8_1","v8_2","v9","v9_1","v9_2","v10","v10_1","v11","v12","v13","v14",\cr
-"v15","v16","v17","v18","v19","v20","v21"\cr}
+"v15","v16","v17","v18","v19","v20","v21","v22"\cr}
 
 \item{species}{A character value representing the abbreviation of species.  Users can apply
 the function \strong{getAllSpecies()} to get the available  abbreviation of species. If species is set
@@ -24,7 +24,7 @@ A data frame
 This function returns the full miRNAs information table of the specified miRBase version
 }
 \examples{
-miRNA_Tab=getMiRNATable(version="v21",species="hsa")
+miRNA_Tab=getMiRNATable(version="v22",species="hsa")
 }
 \author{
 Xu, Taosheng \email{taosheng.x@gmail.com}

@@ -25,4 +25,8 @@ The tutorial and examples of `miRBaseConverter` pacakge can be found [here](http
 
 ## Shiny application
 The online application with interactive interface of this package can be accessed in
+[http://nugget.unisa.edu.au:3838/miRBaseConverter](http://nugget.unisa.edu.au:3838/miRBaseConverter) 
+
+or 
+
 [https://taoshengxu.shinyapps.io/miRBaseConverter/](https://taoshengxu.shinyapps.io/miRBaseConverter/).

@@ -15,4 +15,4 @@ VignetteBuilder: knitr
 biocViews: Software, miRNA
 URL: https://github.com/taoshengxu/miRBaseConverter
 BugReports: https://github.com/taoshengxu/miRBaseConverter/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0

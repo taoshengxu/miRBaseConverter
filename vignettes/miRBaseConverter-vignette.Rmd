@@ -151,13 +151,13 @@ head(result2)
 
 
 # Retrieve the Family category of miRNAs
-miRNAs are manually classified by the single-linkage method to cluster the precursor sequences based on BLAST hits and adjusted manually the clustered families by multiple sequence alignment in [miRBase](http://www.mirbase.org). The family classification is based on a common ancestor for each family representing sequences. Normally, the miRNAs from the same family may possess similar physiological functions in cell metabolism. In *miRBaseConverter* package, the function `checkMiRNAFamliy()` is specifically designed for the retrieval information of miRNA families. It can be applied to retrieve the miRNA families and family accessions for a list of miRNAs. 
+miRNAs are manually classified by the single-linkage method to cluster the precursor sequences based on BLAST hits and adjusted manually the clustered families by multiple sequence alignment in [miRBase](http://www.mirbase.org). The family classification is based on a common ancestor for each family representing sequences. Normally, the miRNAs from the same family may possess similar physiological functions in cell metabolism. In *miRBaseConverter* package, the function `checkMiRNAFamily()` is specifically designed for the retrieval information of miRNA families. It can be applied to retrieve the miRNA families and family accessions for a list of miRNAs. 
 
 ```{r}
 library(miRBaseConverter)
 ## The input is miRNA Accessions
 Accessions=miRNATest$Accession
-Family_Info1=checkMiRNAFamliy(Accessions)
+Family_Info1=checkMiRNAFamily(Accessions)
 head(Family_Info1)
 
 ##The input is miRNA names
@@ -165,7 +165,7 @@ miRNANames=miRNATest$miRNA_Name
 version=checkMiRNAVersion(miRNANames,verbose = FALSE)
 result=miRNA_NameToAccession(miRNANames,version=version)
 Accessions=result$Accession
-Family_Info2=checkMiRNAFamliy(Accessions)
+Family_Info2=checkMiRNAFamily(Accessions)
 head(Family_Info2)
 ```
 
@@ -258,7 +258,7 @@ In *miRBaseConverter* package, the function `goTo_miRNAFamily()` redirects users
 ```{r eval=FALSE}
 library(miRBaseConverter)
 Accessions=miRNATest$Accession
-Family_Info=checkMiRNAFamliy(Accessions)
+Family_Info=checkMiRNAFamily(Accessions)
 FamilyAccessions=Family_Info$FamilyAccession[1:15]
 goTo_miRNAFamily(FamilyAccessions)
 ```

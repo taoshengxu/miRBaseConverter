@@ -21,7 +21,7 @@ This function redirects the miRBase miRNA family webpages of the specified miRNA
 \examples{
 data(miRNATest)
 Accessions=miRNATest$Accession
-Family_Info=checkMiRNAFamliy(Accessions)
+Family_Info=checkMiRNAFamily(Accessions)
 FamilyAccessions=Family_Info$FamilyAccession[1:15]
 goTo_miRNAFamily(FamilyAccessions)
 }

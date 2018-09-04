@@ -11,7 +11,7 @@
 
 <meta name="author" content="Taosheng Xu" />
 
-<meta name="date" content="2018-09-03" />
+<meta name="date" content="2018-09-04" />
 
 <title>miRBaseConverter: A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions</title>
 
@@ -120,7 +120,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">miRBaseConverter: A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions</h1>
 <p class="author-name">Taosheng Xu</p>
-<h4 class="date"><em>2018-09-03</em></h4>
+<h4 class="date"><em>2018-09-04</em></h4>
 
 </div>
 
@@ -356,11 +356,11 @@ head(result2)
 </div>
 <div id="retrieve-the-family-category-of-mirnas" class="section level1">
 <h1><span class="header-section-number">6</span> Retrieve the Family category of miRNAs</h1>
-<p>miRNAs are manually classified by the single-linkage method to cluster the precursor sequences based on BLAST hits and adjusted manually the clustered families by multiple sequence alignment in <a href="http://www.mirbase.org">miRBase</a>. The family classification is based on a common ancestor for each family representing sequences. Normally, the miRNAs from the same family may possess similar physiological functions in cell metabolism. In <em>miRBaseConverter</em> package, the function <code>checkMiRNAFamliy()</code> is specifically designed for the retrieval information of miRNA families. It can be applied to retrieve the miRNA families and family accessions for a list of miRNAs.</p>
+<p>miRNAs are manually classified by the single-linkage method to cluster the precursor sequences based on BLAST hits and adjusted manually the clustered families by multiple sequence alignment in <a href="http://www.mirbase.org">miRBase</a>. The family classification is based on a common ancestor for each family representing sequences. Normally, the miRNAs from the same family may possess similar physiological functions in cell metabolism. In <em>miRBaseConverter</em> package, the function <code>checkMiRNAFamily()</code> is specifically designed for the retrieval information of miRNA families. It can be applied to retrieve the miRNA families and family accessions for a list of miRNAs.</p>
 <pre class="r"><code>library(miRBaseConverter)
 ## The input is miRNA Accessions
 Accessions=miRNATest$Accession
-Family_Info1=checkMiRNAFamliy(Accessions)
+Family_Info1=checkMiRNAFamily(Accessions)
 head(Family_Info1)
 ##      Accession   miRNAName_v21 FamilyAccession  Family
 ## 1 MIMAT0000017   cel-miR-46-3p     MIPF0000087  mir-46
@@ -375,7 +375,7 @@ miRNANames=miRNATest$miRNA_Name
 version=checkMiRNAVersion(miRNANames,verbose = FALSE)
 result=miRNA_NameToAccession(miRNANames,version=version)
 Accessions=result$Accession
-Family_Info2=checkMiRNAFamliy(Accessions)
+Family_Info2=checkMiRNAFamily(Accessions)
 head(Family_Info2)
 ##      Accession   miRNAName_v21 FamilyAccession  Family
 ## 1 MIMAT0000017   cel-miR-46-3p     MIPF0000087  mir-46
@@ -573,7 +573,7 @@ goTo_miRBase(Accessions)</code></pre>
 <p>In <em>miRBaseConverter</em> package, the function <code>goTo_miRNAFamily()</code> redirects users to the miRBase miRNA family webpages of some specified miRNA families.</p>
 <pre class="r"><code>library(miRBaseConverter)
 Accessions=miRNATest$Accession
-Family_Info=checkMiRNAFamliy(Accessions)
+Family_Info=checkMiRNAFamily(Accessions)
 FamilyAccessions=Family_Info$FamilyAccession[1:15]
 goTo_miRNAFamily(FamilyAccessions)</code></pre>
 </div>

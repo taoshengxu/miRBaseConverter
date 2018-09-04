@@ -10,7 +10,7 @@ getAllVersionInfo()
 The detailed version information is printed in the console for user reference.
 }
 \description{
-This fuction return a reference for all miRBase versions' information including Verson name,
+This function return a reference for all miRBase versions' information including Version name,
 Release date, miRNA number and Status.
 }
 \examples{

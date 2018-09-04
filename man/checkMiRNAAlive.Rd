@@ -15,7 +15,7 @@ checkMiRNAAlive(Accessions, verbose = TRUE)
 A  character vector of Accessions for all alive miRNAs. The names of the return vector are the position indexes in the input Accessions.
 }
 \description{
-This function checks the miRNA status (Alive or Dead) in the latest miRBase verison.
+This function checks the miRNA status (Alive or Dead) in the latest miRBase version.
 }
 \examples{
 data(miRNATest)

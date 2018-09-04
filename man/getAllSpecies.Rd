@@ -15,7 +15,7 @@ A data frame with two columns. The two columns are defined as below:
  }
 }
 \description{
-This fuction return a reference for all species of miRNAs including the
+This function return a reference for all species of miRNAs including the
 abbreviation and full name.
 }
 \examples{

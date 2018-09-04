@@ -399,7 +399,7 @@ goTo_miRBase<-function(Accessions)
 
 #' Get all miRBase version information
 #'
-#' This fuction return a reference for all miRBase versions' information including Verson name,
+#' This function return a reference for all miRBase versions' information including Version name,
 #' Release date, miRNA number and Status.
 #'
 #' @author
@@ -417,7 +417,7 @@ getAllVersionInfo<-function()
 
 #' Get all species of miRNAs embodied in miRBase repository
 #'
-#' This fuction return a reference for all species of miRNAs including the
+#' This function return a reference for all species of miRNAs including the
 #' abbreviation and full name.
 #'
 #' @author
@@ -764,28 +764,28 @@ miRNA_MatureToPrecursor<-function(miRNANames,version=NULL)
 #' data(miRNATest)
 #' ## The input is miRNA Accessions
 #' Accessions=miRNATest$Accession
-#' Family_Info1=checkMiRNAFamliy(Accessions)
+#' Family_Info1=checkMiRNAFamily(Accessions)
 #'
 #' ##The input is miRNA names
 #' miRNANames=miRNATest$miRNA_Name
 #' version=checkMiRNAVersion(miRNANames,verbose = TRUE)
 #' result=miRNA_NameToAccession(miRNANames,version=version)
 #' Accessions=result$Accession
-#' Family_Info2=checkMiRNAFamliy(Accessions)
+#' Family_Info2=checkMiRNAFamily(Accessions)
 #'
 #' @return
 #'  A data frame with four columns. The number of rows equal to the input Accessions. The four columns are defined as below:
 #' \itemize{
 #'  \item  \strong{Accession} : The input miRNA accessions.\cr
 #'  \item \strong{miRNAName_v21} : The miRNA names (version 21) corresponding to the Accession.\cr
-#'  \item \strong{FamliyAccession} : The accession of the family .\cr
+#'  \item \strong{FamilyAccession} : The accession of the family .\cr
 #'  \item \strong{Family} : The family name.\cr
 #' }
 #' @author
 #' Xu, Taosheng \email{taosheng.x@@gmail.com}
 #' @export
 #'
-checkMiRNAFamliy<-function(Accessions)
+checkMiRNAFamily<-function(Accessions)
 {
   Accessions=as.character(Accessions)
   Accessions=gsub(" ","",Accessions)##Remove the possible space
@@ -820,7 +820,7 @@ checkMiRNAFamliy<-function(Accessions)
 #' @examples
 #' data(miRNATest)
 #' Accessions=miRNATest$Accession
-#' Family_Info=checkMiRNAFamliy(Accessions)
+#' Family_Info=checkMiRNAFamily(Accessions)
 #' FamilyAccessions=Family_Info$FamilyAccession[1:15]
 #' goTo_miRNAFamily(FamilyAccessions)
 #' @return

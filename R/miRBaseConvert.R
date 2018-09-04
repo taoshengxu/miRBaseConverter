@@ -494,7 +494,7 @@ getMiRNATable<-function(version="v22",species="all")
 
 #' Check the miRNA status(Alive or Dead)
 #'
-#' This function checks the miRNA status (Alive or Dead) in the latest miRBase verison.
+#' This function checks the miRNA status (Alive or Dead) in the latest miRBase version.
 #'
 #' @param Accessions A character vector representing the miRNA Accessions in miRBase.
 #' @param verbose Logical value. If true, the dead miRNAs will be printed the console.

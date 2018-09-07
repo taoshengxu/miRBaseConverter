@@ -9,8 +9,8 @@
 
 
 `miRBaseConverter` is an R/Bioconductor package for converting and retrieving the definition of miRNAs ( Names, Accessions, Sequences, Families and others) in different miRBase versions ( From miRBase version 6 to version 22 [ The latest version ] ). A tiny built-in database is embedded in the `miRBaseConverter` R package for retrieving miRNA information efficiently.
- 
------------------------------------------------------- 
+
+------------------------------------------------------
 
 ## Installing miRBaseConverter
 
@@ -25,8 +25,18 @@ The tutorial and examples of `miRBaseConverter` pacakge can be found [here](http
 
 ## Shiny application
 The online application with interactive interface of this package can be accessed in
-[http://nugget.unisa.edu.au:3838/miRBaseConverter](http://nugget.unisa.edu.au:3838/miRBaseConverter) 
-
-or 
+[http://nugget.unisa.edu.au:3838/miRBaseConverter](http://nugget.unisa.edu.au:3838/miRBaseConverter)  or 
 
 [https://taoshengxu.shinyapps.io/miRBaseConverter/](https://taoshengxu.shinyapps.io/miRBaseConverter/).
+
+
+
+------------------------------------------------------------------------
+
+## Citation
+
+Please cite the following article when using `miRBaseConverter`:
+
+[![doi](https://img.shields.io/badge/doi.org/10.1101/407148-green.svg?style=flat)]( https://doi.org/10.1101/407148)
+
+Taosheng Xu, Ning Su, Lin Liu, Junpeng Zhang, Hongqiang Wang, Jie Gui, Kui Yu, Jiuyong Li, Thuc Duy Le. miRBaseConverter: An R/Bioconductor Package for Converting and Retrieving miRNA Name, Accession, Sequence and Family Information in Different Versions of miRBase. BioRxiv 407148, doi: https://doi.org/10.1101/407148

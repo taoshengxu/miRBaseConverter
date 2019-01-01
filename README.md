@@ -37,7 +37,7 @@ The online application with interactive interface of this package can be accesse
 
 Please cite the following article when using `miRBaseConverter`:
 
-[![doi](https://img.shields.io/badge/doi.org/10.1101/407148-green.svg?style=flat)]( https://doi.org/10.1186/s12859-018-2531-5)
+[![doi](https://img.shields.io/badge/doi.org/10.1186/s12859-018-2531-5-green.svg?style=flat)]( https://doi.org/10.1186/s12859-018-2531-5)
 
 Taosheng Xu, Ning Su, Lin Liu, Junpeng Zhang, Hongqiang Wang, Weijia Zhang, Jie Gui, Kui Yu, Jiuyong Li and Thuc Duy Le. miRBaseConverter: An R/Bioconductor Package for Converting and Retrieving miRNA Name, Accession, Sequence and Family Information in Different Versions of miRBase. BMC Bioinformatics 19 (Suppl 19) :514.
 doi: https://doi.org/10.1186/s12859-018-2531-5
